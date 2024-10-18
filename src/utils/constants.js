@@ -1,5 +1,30 @@
 //latitude: 41.393669
 //longitude: -73.451538
+export const weatherOptions = [
+  //Day
+  {
+    day: true,
+    condition: "clear",
+    url: new URL("../assets/day/Day-Clear.png", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "cloudy",
+    url: new URL("../assets/day/Day-Cloudy.png", import.meta.url).href,
+  },
+  //DO the same for the rest of day: Fog, Rain, Snow, and Storm
+  //Night
+  {
+    day: false,
+    condition: "clear",
+    url: new URL("../assets/night/Night-Clear.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "cloudy",
+    url: new URL("../assests/night/Night-Cloudy.png", import.meta.url).href,
+  },
+];
 
 export const defaultClothingItems = [
   {

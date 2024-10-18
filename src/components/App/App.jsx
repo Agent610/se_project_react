@@ -14,6 +14,7 @@ function App() {
     temp: { F: 999 },
     city: "",
   });
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 
@@ -34,11 +35,10 @@ function App() {
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
-        //debugger;
         setWeatherData(filteredData);
       })
       .catch(console.error);
-  }, {});
+  }, []);
 
   return (
     <div className="app">
