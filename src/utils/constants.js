@@ -1,5 +1,3 @@
-//latitude: 41.393669
-//longitude: -73.451538
 export const weatherOptions = [
   //Day
   {
@@ -12,7 +10,27 @@ export const weatherOptions = [
     condition: "cloudy",
     url: new URL("../assets/day/Day-Cloudy.png", import.meta.url).href,
   },
-  //DO the same for the rest of day: Fog, Rain, Snow, and Storm
+  {
+    day: true,
+    condition: "fog",
+    url: new URL("../assets/day/Day-Fog.png", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "rain",
+    url: new URL("../assets/day/Day-Rain.png", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "snow",
+    url: new URL("../assets/day/Day-Snow.png", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "storm",
+    url: new URL("../assets/day/Day-Storm.png", import.meta.url).href,
+  },
+
   //Night
   {
     day: false,
@@ -22,10 +40,38 @@ export const weatherOptions = [
   {
     day: false,
     condition: "cloudy",
-    url: new URL("../assests/night/Night-Cloudy.png", import.meta.url).href,
+    url: new URL("../assets/night/Night-Cloudy.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "fog",
+    url: new URL("../assets/night/Night-Fog.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "rain",
+    url: new URL("../assets/night/Night-Rain.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "snow",
+    url: new URL("../assets/night/Night-Snow.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "storm",
+    url: new URL("../assets/night/Night-Storm.png", import.meta.url).href,
   },
 ];
 
+export const defaultWeatherOptions = {
+  day: {
+    url: new URL("../assests/day/Auto-Day.png", import.meta.url).href,
+  },
+  night: {
+    url: new URL("../assets/night/Auto-Night.png", import.meta.url).href,
+  },
+};
 export const defaultClothingItems = [
   {
     _id: 0,
