@@ -1,7 +1,14 @@
-/*.modal__content {
+/* /*.modal__content {
   visibility: visible;
 }
 
 .modal__content_type_image {
   visibility: visible;
+} */
+
+.modal__image {
+  width: 498px;
+  height: 498px;
+  max-width: 100%;
+  max-height: 100%;
 }
