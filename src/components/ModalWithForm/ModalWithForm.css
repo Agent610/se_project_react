@@ -28,7 +28,6 @@
 .modal__content_type_image {
   background-color: white;
   position: relative;
-  padding: 28px 28px 36px;
   max-width: 498px;
   box-sizing: border-box;
   width: 100%;
@@ -49,6 +48,7 @@
   font-size: 16px;
   line-height: 20px;
   color: #000000;
+  margin-bottom: 24px;
 }
 
 .modal__form {
@@ -65,6 +65,7 @@
   display: block;
   width: 440px;
   border: 1px;
+  margin-bottom: 24px;
 }
 
 .modal__radio-input {
@@ -99,5 +100,19 @@
 .modal__submit {
   width: 124px;
   height: 36px;
-  gap: 12px;
+  margin-top: 32px;
+}
+
+.modal__caption {
+  width: 36px;
+  height: 24px;
+  top: 624px;
+  left: 503px;
+}
+
+.modal__weather {
+  width: 115px;
+  height: 24px;
+  top: 660px;
+  left: 503px;
 }
