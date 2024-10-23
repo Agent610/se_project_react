@@ -1,20 +1,18 @@
 .footer {
   width: 1358px;
   height: 20px;
-  top: 778px;
-  left: 40px;
 }
 
 .footer__description {
   width: 204px;
   height: 20px;
-  top: 778px;
-  left: 40px;
+  margin-left: 28px;
+  margin-right: 1116px;
+  margin-top: 171px;
+  margin-bottom: 24px;
 }
 
 .footer__year {
   width: 38px;
   height: 20px;
-  top: 778px;
-  left: 1360px;
 }

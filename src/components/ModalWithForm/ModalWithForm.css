@@ -37,10 +37,10 @@
   position: absolute;
   top: 20px;
   right: 28px;
+  border: none;
 }
 
 .modal__title {
-  margin: 0;
   width: 95px;
   height: 20px;
   font-family: Cabinet Grotesk;
@@ -48,7 +48,7 @@
   font-size: 16px;
   line-height: 20px;
   color: #000000;
-  margin-bottom: 24px;
+  margin-left: 28px;
 }
 
 .modal__form {
@@ -86,6 +86,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+  margin-left: 28px;
 }
 
 .modal__legend {
@@ -95,24 +96,28 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+  margin-left: 28px;
 }
 
 .modal__submit {
   width: 124px;
   height: 36px;
   margin-top: 32px;
+  margin-left: 28px;
 }
 
 .modal__caption {
   width: 36px;
   height: 24px;
-  top: 624px;
-  left: 503px;
+  margin-left: 32px;
+  margin-top: 20px;
+  margin-right: 430px;
+  margin-bottom: 12px;
 }
 
 .modal__weather {
   width: 115px;
   height: 24px;
-  top: 660px;
-  left: 503px;
+  margin-left: 32px;
+  margin-bottom: 32px;
 }
