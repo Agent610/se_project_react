@@ -11,14 +11,18 @@
   position: absolute;
   top: 15px;
   margin: 0;
-  width: 49px;
   height: 20px;
   font-family: Cabinet Grotesk;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
 }
 
 .card__image {
   width: 100%;
+  cursor: pointer;
 }
