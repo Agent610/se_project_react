@@ -1,0 +1,53 @@
+.ToggleSwitch {
+  display: flex;
+  position: relative;
+}
+
+.ToggleSwitch__active {
+  color: white;
+  font-size: 16px;
+}
+
+.ToggleSwitch__box {
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 56px;
+  height: 28px;
+  outline: none;
+  appearance: none;
+}
+
+.ToggleSwitch__slider {
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.ToggleSwitch__slider-F {
+  top: 3px;
+  left: 32px;
+}
+
+.ToggleSwitch__slider-C {
+  top: 3px;
+  left: 5px;
+}
+
+.ToggleSwitch__Temperature-F {
+  position: absolute;
+  top: -7px;
+  left: 38px;
+  color: white;
+}
+
+.ToggleSwitch__Temperature-C {
+  position: absolute;
+  top: -7px;
+  left: 14px;
+  color: white;
+}
