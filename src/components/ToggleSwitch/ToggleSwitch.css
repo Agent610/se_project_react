@@ -15,6 +15,7 @@
   height: 28px;
   outline: none;
   appearance: none;
+  margin-left: 666px;
 }
 
 .ToggleSwitch__slider {
@@ -26,16 +27,19 @@
   text-align: center;
   cursor: pointer;
   position: absolute;
+  margin-left: 666px;
 }
 
 .ToggleSwitch__slider-F {
   top: 3px;
-  left: 32px;
+  left: 27px;
+  margin-left: 666px;
 }
 
 .ToggleSwitch__slider-C {
   top: 3px;
-  left: 5px;
+  left: 1px;
+  margin-left: 666px;
 }
 
 .ToggleSwitch__Temperature-F {
@@ -43,11 +47,13 @@
   top: -7px;
   left: 38px;
   color: white;
+  margin-left: 666px;
 }
 
 .ToggleSwitch__Temperature-C {
   position: absolute;
   top: -7px;
-  left: 14px;
+  left: 7px;
   color: white;
+  margin-left: 666px;
 }
