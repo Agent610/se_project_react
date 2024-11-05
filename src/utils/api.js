@@ -6,4 +6,4 @@ function getItems() {
   });
 }
 
-export { getItems };
+export default { getItems };
