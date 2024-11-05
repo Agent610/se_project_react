@@ -1,2 +1,4 @@
 @import url(./vendor/normalize.css);
 @import url(./components/Footer/Footer.css);
+@import url(./components/ClothesSection/ClothesSection.css);
+@import url(./components/SideBar/SideBar.css);
