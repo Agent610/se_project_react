@@ -11,6 +11,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import getItems from "../../utils/api";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
