@@ -9,9 +9,9 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-//import {CurrentTemperatureUnit} from './contexts/CurrentTemperatureUnit';
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
+import { getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,6 +23,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemeratureUnit] = useState("F");
+  //const [ClothingItems, setClothingItems] = useState({});
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -47,6 +48,14 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
       })
       .catch(console.error);
   }, []);
