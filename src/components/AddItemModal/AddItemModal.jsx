@@ -1,4 +1,4 @@
-import React from "react";
+//import React from "react";
 
 // const AddItemModal = ({activeModal,closeActiveModal}) => {
 //   return (
@@ -61,4 +61,4 @@ import React from "react";
 //   );
 // };
 
-export default AddItemModal;
+//export default AddItemModal;
