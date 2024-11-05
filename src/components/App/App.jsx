@@ -11,6 +11,7 @@ import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 //import {CurrentTemperatureUnit} from './contexts/CurrentTemperatureUnit';
 import { Routes, Route } from "react-router-dom";
+import Profile from "../Profile/Profile";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -57,6 +58,7 @@ function App() {
       >
         <div className="app__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+
           <Routes>
             <Route
               path="/"
@@ -67,7 +69,7 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<p>PROFILE</p>} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
         <ModalWithForm
