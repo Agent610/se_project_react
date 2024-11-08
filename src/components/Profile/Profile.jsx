@@ -2,6 +2,8 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
 
+import React from "react";
+
 function Profile({ onCardClick }) {
   return (
     <div className="profile">

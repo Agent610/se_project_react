@@ -10,8 +10,10 @@ import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import getItems from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal";
+//import getItems from "../../utils/api";
+
+//import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -22,7 +24,7 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentTemperatureUnit, setCurrentTemeratureUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   //const [ClothingItems, setClothingItems] = useState({});
 
   const handleCardClick = (card) => {
@@ -39,8 +41,8 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemeratureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemeratureUnit("C");
+    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
   useEffect(() => {
@@ -52,13 +54,13 @@ function App() {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    getItems()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch(console.error);
-  }, []);
+  // useEffect(() => {
+  //   getItems()
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch(console.error);
+  // }, []);
 
   return (
     <div className="app">
