@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
-import AddItemModal from "../AddItemModal/AddItemModal";
+//import AddItemModal from "../AddItemModal/AddItemModal";
 //import getItems from "../../utils/api";
 
 //import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
@@ -41,6 +41,7 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
+    console.log("is this firing");
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
