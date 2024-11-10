@@ -1,4 +1,4 @@
-import "./ItemModal.css";
+//import "./Modal.css";
 import CloseButton from "../../assets/Close-Button.png";
 
 function ItemModal({ activeModal, onClose, card }) {
