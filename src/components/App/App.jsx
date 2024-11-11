@@ -11,7 +11,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-//import getItems from "../../utils/api";
+import api from "../../utils/api";
 
 //import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
@@ -45,10 +45,32 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const [defaultClothingItems, setClothingItems] = useState([]);
+  useEffect(() => {
+    api
+      .getItemList()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleAddItemSubmit = (item) => {
-    setClothingItems([item, ...defaultClothingItems]);
+    api
+      .addItem(item)
+      .then((newItem) => {
+        setClothingItems({ newItem, ...clothingItems });
+        closeActiveModal();
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleCardDelete = (card) => {
+    api
+      .removeItem(card.id)
+      .then(() => {
+        setClothingItems((card) => card.filter((c) => c.id !== card.id));
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
