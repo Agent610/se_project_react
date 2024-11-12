@@ -10,10 +10,10 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
   const handleImageUrlOnChange = (e) => setImageUrl(e.target.value);
   const handleWeatherOnChange = (e) => setWeather(e.target.value);
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
     onAddItem({ name, imageUrl, weather });
-  };
+  }
 
   return (
     <ModalWithForm isOpen={isOpen} onClose={onCloseModal}>
@@ -25,13 +25,13 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
           placeholder="Name"
         />
         <input
-          type="text"
+          type="url"
           value={imageUrl}
           onChange={handleImageUrlOnChange}
           placeholder="Image URL"
         />
         <input
-          type="text"
+          type="radio"
           value={weather}
           onChange={handleWeatherOnChange}
           placeholder="Weather"

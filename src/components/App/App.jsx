@@ -13,8 +13,6 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/api";
 
-//import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -45,32 +43,8 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  useEffect(() => {
-    api
-      .getItemList()
-      .then((items) => {
-        setClothingItems(items);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
   const handleAddItemSubmit = (item) => {
-    api
-      .addItem(item)
-      .then((newItem) => {
-        setClothingItems({ newItem, ...clothingItems });
-        closeActiveModal();
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const handleCardDelete = (card) => {
-    api
-      .removeItem(card.id)
-      .then(() => {
-        setClothingItems((card) => card.filter((c) => c.id !== card.id));
-      })
-      .catch((error) => console.log(error));
+    setClothingItems([item, ...clothingItems]);
   };
 
   useEffect(() => {
@@ -79,16 +53,8 @@ function App() {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
-      .catch(console.error);
+      .catch(console.err);
   }, []);
-
-  // useEffect(() => {
-  //   getItems()
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .catch(console.error);
-  // }, []);
 
   return (
     <div className="app">
