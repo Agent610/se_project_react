@@ -5,7 +5,7 @@ function ItemCard({ item, onCardClick, onCardDelete }) {
     onCardClick(item);
   };
 
-  const handleCardDelete = () => {
+  const handleDeleteClick = () => {
     onCardDelete(item);
   };
 
@@ -18,13 +18,13 @@ function ItemCard({ item, onCardClick, onCardDelete }) {
         src={item.imageUrl}
         alt={item.name}
       />
+      <button
+        type="button"
+        className="card__delete"
+        onClick={handleDeleteClick}
+      />
     </li>
   );
 }
 
 export default ItemCard;
-
-//ON card Delete when you get there
-
-// <button
-// type="Button", className=card__delete-button, onClick={}

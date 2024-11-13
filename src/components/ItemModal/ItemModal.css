@@ -12,3 +12,13 @@
   max-width: 100%;
   max-height: 100%;
 }
+
+.card__delete-caption {
+  border: none;
+  width: 101px;
+  height: 24px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: orange;
+}

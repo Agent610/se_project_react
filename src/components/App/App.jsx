@@ -23,7 +23,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  //const [ClothingItems, setClothingItems] = useState({});
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -43,8 +43,32 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
+  useEffect(() => {
+    api
+      .getItemList()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const handleAddItemSubmit = (item) => {
-    setClothingItems([item, ...clothingItems]);
+    api
+      .addItem(item)
+      .then((item) => {
+        setClothingItems([item, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleCardDelete = (card) => {
+    api
+      .removeItem(card.id)
+      .then(() => {
+        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -70,12 +94,21 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  cards={clothingItems}
+                  handleCardDelete={handleCardDelete}
                 />
               }
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  cards={clothingItems}
+                  handleCardClick={handleCardClick}
+                  handleCardDelete={handleCardDelete}
+                  onAddNewClick={() => setActiveModal("create")}
+                />
+              }
             />
           </Routes>
         </div>
@@ -150,6 +183,12 @@ function App() {
           onClose={closeActiveModal}
         />
         <Footer />
+        {activeModal === "create" && (
+          <AddItemModal
+            onClose={closeActiveModal}
+            isOpen={handleAddItemSubmit}
+          />
+        )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

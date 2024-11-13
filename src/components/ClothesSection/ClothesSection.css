@@ -5,4 +5,5 @@
 }
 
 .clothes-section__list {
+  display: flex;
 }

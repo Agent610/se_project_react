@@ -6,7 +6,6 @@ const handleServerResponse = (res) => {
 
 const getItemList = () => {
   return fetch(`${baseUrl}/items`, {
-    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
