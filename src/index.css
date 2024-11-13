@@ -2,3 +2,5 @@
 @import url(./components/Footer/Footer.css);
 @import url(./components/ClothesSection/ClothesSection.css);
 @import url(./components/SideBar/SideBar.css);
+@import url(./components/AddItemModal/AddItemModal.css);
+@import url(./components/ItemModal/ItemModal.css);
