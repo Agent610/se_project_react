@@ -23,7 +23,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState([]);
+  const [clothingItems, setClothingItems] = useState({});
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -43,14 +43,14 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  useEffect(() => {
-    api
-      .getItemList()
-      .then((items) => {
-        setClothingItems(items);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   api
+  //     .getItemList()
+  //     .then((items) => {
+  //       setClothingItems(items);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const handleAddItemSubmit = (item) => {
     api

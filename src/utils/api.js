@@ -4,15 +4,15 @@ const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
-const getItemList = () => {
-  return fetch(`${baseUrl}/items`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then(handleServerResponse);
-};
+// const getItemList = () => {
+//   return fetch(`${baseUrl}/items`, {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   }).then(handleServerResponse);
+// };
 
-const addItem = ({ name, weather, imageUrl }) => {
+const addItem = ({ name, weather, imageUrl, item }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -22,6 +22,7 @@ const addItem = ({ name, weather, imageUrl }) => {
       name,
       weather,
       imageUrl,
+      item,
     }),
   }).then(handleServerResponse);
 };
@@ -36,7 +37,7 @@ const removeItem = (id) => {
 };
 
 const api = {
-  getItemList,
+  //getItemList,
   addItem,
   removeItem,
 };
