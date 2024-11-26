@@ -56,6 +56,7 @@ function App() {
     api
       .addItem(item)
       .then((item) => {
+        console.log(item);
         setClothingItems([item, ...clothingItems]);
         closeActiveModal();
       })
@@ -118,6 +119,7 @@ function App() {
           activeModal={activeModal}
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
+          onSubmit={handleAddItemSubmit}
         >
           <label htmlFor="name" className="modal__label">
             Name{" "}
@@ -183,12 +185,13 @@ function App() {
           onClose={closeActiveModal}
         />
         <Footer />
-        {activeModal === "create" && (
-          <AddItemModal
-            onClose={closeActiveModal}
-            isOpen={handleAddItemSubmit}
-          />
-        )}
+
+        <AddItemModal
+          onClose={closeActiveModal}
+          isOpen={activeModal === "create"}
+          onSubmit={handleAddItemSubmit}
+          // onSubmit={handleSubmit}
+        />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

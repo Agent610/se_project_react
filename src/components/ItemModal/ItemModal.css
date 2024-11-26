@@ -13,12 +13,22 @@
   max-height: 100%;
 }
 
-.card__delete-caption {
-  border: none;
+.card__delete {
   width: 101px;
   height: 24px;
+  /* top: 624px;
+  left: 836px; 
+
+.card__delete-caption {
+  /* width: 101px;
+  height: 24px;
+  top: 624px;
+  left: 836px; */
+  font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  font-weight: 700;
+  font-family: "Cabinet Grotesk";
   color: orange;
+  cursor: pointer;
+  border: none;
 }

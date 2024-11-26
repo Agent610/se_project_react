@@ -5,9 +5,10 @@
 }
 
 .header__add-clothes-button {
-  margin-right: 20px;
+  margin-right: 210px;
   border: none;
   cursor: pointer;
+  width: 100%;
 }
 
 .header__user-container {
@@ -18,10 +19,13 @@
 
 .header__username {
   margin-right: 20px;
+  position: relative;
+  width: 100%;
 }
 
 .header__date-and-location {
   margin: 0;
+  width: 100%;
 }
 
 .header__logo {

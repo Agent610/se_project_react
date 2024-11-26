@@ -17,7 +17,6 @@ function WeatherCard({ weatherData }) {
   } else {
     weatherOption = filteredOptions[0];
   }
-  console.log(weatherData);
 
   //let { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
