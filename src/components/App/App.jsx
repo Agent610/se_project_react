@@ -43,14 +43,14 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  // useEffect(() => {
-  //   api
-  //     .getItemList()
-  //     .then((items) => {
-  //       setClothingItems(items);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    api
+      .getItemList()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleAddItemSubmit = (item) => {
     api

@@ -2,6 +2,7 @@
 }
 
 .clothes__section-button {
+  cursor: pointer;
 }
 
 .clothes-section__list {
