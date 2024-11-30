@@ -12,7 +12,7 @@ const getItemList = () => {
   }).then(handleServerResponse);
 };
 
-const addItem = ({ name, weather, imageUrl, item }) => {
+const addItem = ({ name, weather, imageUrl }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -22,7 +22,6 @@ const addItem = ({ name, weather, imageUrl, item }) => {
       name,
       weather,
       imageUrl,
-      item,
     }),
   }).then(handleServerResponse);
 };

@@ -15,7 +15,7 @@ function ItemCard({ item, onCardClick, onCardDelete }) {
       <img
         onClick={handleCardClick}
         className="card__image"
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
       />
       <button

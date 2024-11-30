@@ -6,7 +6,6 @@ function ModalWithForm({
   children,
   buttonText,
   title,
-  activeModal,
   onClose,
   isOpen,
   onSubmit,
@@ -18,7 +17,12 @@ function ModalWithForm({
         <button onClick={onClose} type="button" className="modal__close">
           <img src={CloseButton} alt="Close-Button" />
         </button>
-        <form className="modal__form" onSubmit={onSubmit}>
+        <form
+          className="modal__form"
+          onSubmit={(e) => {
+            onSubmit(e);
+          }}
+        >
           {children}
           <button onSubmit={onSubmit} type="submit" className="modal__submit">
             {buttonText}
