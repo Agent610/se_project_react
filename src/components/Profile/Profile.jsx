@@ -3,7 +3,13 @@ import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
 import React from "react";
 
-function Profile({ onCardClick, onCardDelete, onAddNewClick, cards }) {
+function Profile({
+  onCardClick,
+  onCardDelete,
+  onAddNewClick,
+  cards,
+  clothingItems,
+}) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
@@ -15,6 +21,7 @@ function Profile({ onCardClick, onCardDelete, onAddNewClick, cards }) {
           onCardDelete={onCardDelete}
           onAddNewClick={onAddNewClick}
           sectionData={cards}
+          clothingItems={clothingItems}
         />
       </section>
     </div>

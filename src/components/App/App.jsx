@@ -116,7 +116,6 @@ function App() {
             />
           </Routes>
         </div>
-
         <ItemModal
           handleCardDelete={handleCardDelete}
           activeModal={activeModal}
@@ -124,12 +123,10 @@ function App() {
           onClose={closeActiveModal}
         />
         <Footer />
-
         <AddItemModal
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
           onSubmit={handleAddItemSubmit}
-          // onSubmit={handleSubmit}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
