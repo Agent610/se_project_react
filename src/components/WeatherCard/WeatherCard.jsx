@@ -18,6 +18,8 @@ function WeatherCard({ weatherData }) {
     weatherOption = filteredOptions[0];
   }
 
+  console.log(weatherOption?.url);
+
   //let { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 

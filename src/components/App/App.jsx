@@ -66,8 +66,9 @@ function App() {
   };
 
   const handleCardDelete = (card) => {
+    console.log("Deleting item with id: ${card.id}}");
     api
-      .removeItem(card.id)
+      .removeItem(card._id)
       .then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
       })
@@ -117,6 +118,7 @@ function App() {
         </div>
 
         <ItemModal
+          handleCardDelete={handleCardDelete}
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}

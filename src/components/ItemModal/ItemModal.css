@@ -16,14 +16,14 @@
 .card__delete {
   width: 101px;
   height: 24px;
-  /* top: 624px;
-  left: 836px; 
-
+  top: 624px;
+  left: 836px;
+}
 .card__delete-caption {
-  /* width: 101px;
+  width: 101px;
   height: 24px;
   top: 624px;
-  left: 836px; */
+  left: 836px;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
