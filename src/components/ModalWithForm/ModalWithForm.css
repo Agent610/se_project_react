@@ -106,6 +106,7 @@
   height: 36px;
   margin-top: 32px;
   margin-left: 28px;
+  cursor: pointer;
 }
 
 .modal__caption {
