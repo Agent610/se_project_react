@@ -107,7 +107,7 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  cards={clothingItems}
+                  clothingItems={clothingItems}
                   handleCardClick={handleCardClick}
                   handleCardDelete={handleCardDelete}
                   onAddNewClick={() => setActiveModal("create")}

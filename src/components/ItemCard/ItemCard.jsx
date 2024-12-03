@@ -5,7 +5,7 @@ function ItemCard({ item, onCardClick, onCardDelete }) {
     onCardClick(item);
   };
 
-  const handleDeleteClick = () => {
+  const handleCardDelete = () => {
     onCardDelete(item);
   };
 
@@ -21,7 +21,7 @@ function ItemCard({ item, onCardClick, onCardDelete }) {
       <button
         type="button"
         className="card__delete"
-        onClick={handleDeleteClick}
+        onClick={handleCardDelete}
       />
     </li>
   );
