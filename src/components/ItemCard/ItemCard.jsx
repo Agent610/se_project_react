@@ -18,11 +18,11 @@ function ItemCard({ item, onCardClick, onCardDelete }) {
         src={item.imageUrl}
         alt={item.name}
       />
-      <button
+      {/* <button
         type="button"
         className="card__delete"
         onClick={handleCardDelete}
-      />
+      /> */}
     </li>
   );
 }
