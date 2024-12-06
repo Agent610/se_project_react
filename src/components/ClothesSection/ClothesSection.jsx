@@ -1,13 +1,13 @@
 //import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ handleAddClick, onCardClick, clothingItems }) {
+function ClothesSection({ onAddNewClick, onCardClick, clothingItems }) {
   return (
     <div className="clothes-section">
       <div>
         <p className="clothes__section-title">Your items</p>
         <button
-          onClick={handleAddClick}
+          onClick={onAddNewClick}
           type="button"
           className="clothes__section-button"
         >

@@ -66,11 +66,12 @@ function App() {
   };
 
   const handleCardDelete = (card) => {
-    console.log("Deleting item with id: ${card.id}}");
+    console.log(`Deleting item with id: ${card._id}`);
     api
       .removeItem(card._id)
       .then(() => {
-        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        setClothingItems(clothingItems.filter((c) => c._id !== card._id));
+        closeActiveModal();
       })
       .catch((err) => console.log(err));
   };
@@ -111,7 +112,7 @@ function App() {
                   clothingItems={clothingItems}
                   handleCardClick={handleCardClick}
                   handleCardDelete={handleCardDelete}
-                  onAddNewClick={() => setActiveModal("create")}
+                  onAddNewClick={() => setActiveModal("add-garment")}
                 />
               }
             />

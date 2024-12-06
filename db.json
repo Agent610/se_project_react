@@ -83,12 +83,6 @@
       "name": "Sweatshirt",
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sweatshirt.png?etag=008a9674757bea2e0bdb31242e364be0"
-    },
-    {
-      "name": "Testing",
-      "weather": "hot",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-sUnTM8i28IRrBppEaCbCsfTb7SOxafp89g&s",
-      "_id": 16
     }
   ]
 }
