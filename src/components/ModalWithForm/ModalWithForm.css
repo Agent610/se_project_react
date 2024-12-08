@@ -109,6 +109,11 @@
   cursor: pointer;
 }
 
+.modal__footer {
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .modal__caption {
   width: 36px;
   height: 24px;
