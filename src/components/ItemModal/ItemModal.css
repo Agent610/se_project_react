@@ -1,5 +1,8 @@
-/* /*.modal__content {
-  visibility: visible;
+/*.modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal__content_type_image {
