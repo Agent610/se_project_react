@@ -5,10 +5,9 @@
 }
 
 .header__add-clothes-button {
-  margin-right: 210px;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 142px;
 }
 
 .header__user-container {
@@ -37,4 +36,6 @@
 .header__link {
   text-decoration: none;
   color: black;
+  display: flex;
+  margin-left: 12px;
 }

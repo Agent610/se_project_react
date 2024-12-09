@@ -42,3 +42,9 @@ const api = {
 };
 
 export default api;
+export function handleServerResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+}
