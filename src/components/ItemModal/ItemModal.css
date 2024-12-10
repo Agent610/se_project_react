@@ -19,11 +19,17 @@
 .card__delete {
   width: 101px;
   height: 24px;
-  top: 624px;
-  left: 836px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "Cabinet Grotesk";
+  color: orange;
+  cursor: pointer;
+  border: none;
+  margin-left: 365px;
 }
 
-.card__delete-caption {
+/* .card__delete-caption {
   width: 101px;
   height: 24px;
   top: 624px;
@@ -35,4 +41,8 @@
   color: orange;
   cursor: pointer;
   border: none;
-}
+  margin-top: 20px;
+  margin-right: 32px;
+  margin-bottom: 68px;
+  margin-left: 365px;
+} */

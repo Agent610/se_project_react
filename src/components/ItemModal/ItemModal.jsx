@@ -18,7 +18,8 @@ function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
             className="card__delete"
             onClose={onClose}
           >
-            <p className="card__delete-caption"> Delete item</p>
+            Delete item
+            {/* <p className="card__delete-caption"> Delete item</p> */}
           </button>
         </div>
       </div>

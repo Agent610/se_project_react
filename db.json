@@ -73,12 +73,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432"
     },
     {
-      "name": "Testing",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2",
-      "_id": 15
-    },
-    {
       "name": "Testing.2",
       "weather": "hot",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-sUnTM8i28IRrBppEaCbCsfTb7SOxafp89g&s",
@@ -89,6 +83,12 @@
       "weather": "hot",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-sUnTM8i28IRrBppEaCbCsfTb7SOxafp89g&s",
       "_id": 17
+    },
+    {
+      "name": "Testing",
+      "weather": "hot",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2",
+      "_id": 18
     }
   ]
 }
