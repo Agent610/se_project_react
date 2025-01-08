@@ -7,19 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directory
 node_modules
 dist
 dist-ssr
 *.local
-
-# Optional npm cache directory 
-.npm 
-
-# System files and IDE settings folders 
-.DS_Store
-.idea 
-.vscode
 
 # Editor directories and files
 .vscode/*
