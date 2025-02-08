@@ -49,7 +49,7 @@ function App() {
     api
       .getItemList()
       .then((items) => {
-        setClothingItems(items.reverse());
+        setClothingItems(items.data.reverse());
       })
       .catch((err) => console.log(err));
   }, []);
