@@ -14,6 +14,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/api";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
