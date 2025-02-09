@@ -35,10 +35,32 @@ const removeItem = (id) => {
   }).then(handleServerResponse);
 };
 
+const signUp = ({ email, password, name, avatar }) => {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password, name, avatar }),
+  });
+};
+
+const signIn = ({ email, password }) => {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+};
+
 const api = {
   getItemList,
   addItem,
   removeItem,
+  signUp,
+  signIn,
 };
 
 export default api;

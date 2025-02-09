@@ -12,6 +12,8 @@ import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/api";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -76,6 +78,26 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const handleLoginSubmit = (e) => {
+    api.signIn
+      .then(() => {
+        onSubmit(email, password);
+        closeActiveModal();
+      })
+      .catch((err) => console.log(err));
+    e.preventDefault();
+  };
+
+  const handleRegisterSubmit = (e) => {
+    api.signIn
+      .then(() => {
+        onSubmit(email, password, name, avatar);
+        closeActiveModal();
+      })
+      .catch((err) => console.log(err));
+    e.preventDefault();
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -130,6 +152,16 @@ function App() {
           isOpen={activeModal === "add-garment"}
           onSubmit={handleAddItemSubmit}
         />
+        <LoginModal>
+          onClose={closeActiveModal}
+          activeModal={activeModal}
+          onSubmit={handleLoginSubmit}
+        </LoginModal>
+        <RegisterModal>
+          onClose={closeActiveModal}
+          activeModal={activeModal}
+          onSubmit={handleRegisterSubmit}
+        </RegisterModal>
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

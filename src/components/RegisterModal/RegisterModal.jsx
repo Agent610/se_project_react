@@ -73,4 +73,4 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
   );
 };
 
-export default AddItemModal;
+export default RegisterModal;
