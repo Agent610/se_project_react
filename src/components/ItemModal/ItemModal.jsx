@@ -12,15 +12,17 @@ function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
-          <button
-            onClick={() => handleCardDelete(card)}
-            type="button"
-            className="card__delete"
-            onClose={onClose}
-          >
-            Delete item
-            {/* <p className="card__delete-caption"> Delete item</p> */}
-          </button>
+          {isOwn && (
+            <button
+              onClick={() => handleCardDelete(card)}
+              type="button"
+              className="card__delete"
+              onClose={onClose}
+            >
+              Delete item
+              {/* <p className="card__delete-caption"> Delete item</p> */}
+            </button>
+          )}
         </div>
       </div>
     </div>

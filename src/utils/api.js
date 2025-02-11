@@ -55,12 +55,34 @@ const signIn = ({ email, password }) => {
   });
 };
 
+const addCardLike = ({ id, token }) => {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id, token }),
+  });
+};
+
+const removeCardLike = ({ id, token }) => {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id, token }),
+  });
+};
+
 const api = {
   getItemList,
   addItem,
   removeItem,
   signUp,
   signIn,
+  addCardLike,
+  removeCardLike,
 };
 
 export default api;
