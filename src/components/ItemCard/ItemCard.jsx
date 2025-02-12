@@ -1,12 +1,16 @@
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardClick, onCardDelete }) {
+function ItemCard({ item, onCardClick, onCardDelete, onCardLike }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
 
   const handleCardDelete = () => {
     onCardDelete(item);
+  };
+
+  const handleCardLike = () => {
+    onCardLike(item);
   };
 
   return (
@@ -17,6 +21,7 @@ function ItemCard({ item, onCardClick, onCardDelete }) {
         className="card__image"
         src={item.imageUrl}
         alt={item.name}
+        onCardLike={handleCardLike}
       />
       {/* <button
         type="button"

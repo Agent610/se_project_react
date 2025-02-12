@@ -10,6 +10,7 @@ function Main({
   handleCardClick,
   handleCardDelete,
   clothingItems,
+  onCardLike,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
@@ -32,6 +33,7 @@ function Main({
                   item={item}
                   onCardClick={handleCardClick}
                   onCardDelete={handleCardDelete}
+                  onCardLike={onCardLike}
                 />
               );
             })}

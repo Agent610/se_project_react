@@ -22,6 +22,7 @@ function Profile({
           onAddNewClick={onAddNewClick}
           sectionData={cards}
           clothingItems={clothingItems}
+          isLoggedIn={false}
         />
       </section>
     </div>
