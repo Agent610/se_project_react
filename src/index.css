@@ -4,3 +4,5 @@
 @import url(./components/SideBar/SideBar.css);
 @import url(./components/AddItemModal/AddItemModal.css);
 @import url(./components/ItemModal/ItemModal.css);
+@import url(./components/LoginModal/LoginModal.css);
+@import url(./components/RegisterModal/RegisterModal.css);
