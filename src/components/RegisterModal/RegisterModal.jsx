@@ -20,11 +20,12 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Sign Up or Log in"
+      buttonText="Next"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleFormSubmit}
     >
+      <Button> Log in</Button>
       <label htmlFor="email" className="modal__label">
         Email{" "}
         <input

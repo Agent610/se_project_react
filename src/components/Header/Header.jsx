@@ -4,7 +4,7 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
-import UserContext from "../../contexts/CurrentUserContext";
+import userContext from "../../contexts/CurrentUserContext";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -12,7 +12,7 @@ function Header({ handleAddClick, weatherData }) {
     day: "numeric",
   });
 
-  const { user } = useContext(useContext);
+  const { user } = useContext(userContext);
 
   return (
     <header className="header">

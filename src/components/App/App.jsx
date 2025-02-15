@@ -30,6 +30,8 @@ function App() {
 
   console.log(clothingItems);
 
+  const [currentUser, setCurrentUserContext] = useState("");
+
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -80,17 +82,15 @@ function App() {
   };
 
   const handleLoginSubmit = (e) => {
-    api.signIn
-      .then(() => {
-        onSubmit(email, password);
-        closeActiveModal();
-      })
-      .catch((err) => console.log(err));
+    api.signIn.then(() => {
+      onSubmit(email, password);
+    });
+    //.catch((err) => console.log(err));
     e.preventDefault();
   };
 
   const handleRegisterSubmit = (e) => {
-    api.signIn
+    api.signUp
       .then(() => {
         onSubmit(email, password, name, avatar);
         closeActiveModal();
@@ -175,18 +175,18 @@ function App() {
           isOpen={activeModal === "add-garment"}
           onSubmit={handleAddItemSubmit}
         />
-        <LoginModal>
+        <LoginModal
           onClose={closeActiveModal}
           activeModal={activeModal}
           onSubmit={handleLoginSubmit}
-        </LoginModal>
-        <RegisterModal>
+        />
+        <RegisterModal
           onClose={closeActiveModal}
           activeModal={activeModal}
           onSubmit={handleRegisterSubmit}
-        </RegisterModal>
+        />
       </CurrentTemperatureUnitContext.Provider>
-      <CurrentUserContext.Provider value={currentUser}>
+      <CurrentUserContext.Provider value={currentUser} isLoggedIn={""}>
         <div className="page"></div>
       </CurrentUserContext.Provider>
     </div>
