@@ -20,7 +20,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Next"
+      buttonText="Sign Up"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleFormSubmit}

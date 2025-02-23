@@ -36,7 +36,7 @@ const removeItem = (id) => {
 };
 
 const signUp = ({ email, password, name, avatar }) => {
-  return fetch(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/signUp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const signUp = ({ email, password, name, avatar }) => {
 };
 
 const signIn = ({ email, password }) => {
-  return fetch(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/signIn`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const signIn = ({ email, password }) => {
 };
 
 const addCardLike = ({ id, token }) => {
-  return fetch(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/likes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const addCardLike = ({ id, token }) => {
 };
 
 const removeCardLike = ({ id, token }) => {
-  return fetch(`${baseUrl}/items`, {
+  return fetch(`${baseUrl}/likes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

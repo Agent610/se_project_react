@@ -21,7 +21,7 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
       isOpen={isOpen}
       onSubmit={handleFormSubmit}
     >
-      <button>Register</button>
+      <button>Sign up</button>
       <label htmlFor="email" className="modal__label">
         Email{" "}
         <input

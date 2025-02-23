@@ -15,6 +15,7 @@ import api from "../../utils/api";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectRoute/ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -81,19 +82,20 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleLoginSubmit = (e) => {
-    api.signIn.then(() => {
-      onSubmit(email, password);
-    });
-    //.catch((err) => console.log(err));
-    e.preventDefault();
-  };
-
   const handleRegisterSubmit = (e) => {
     api.signUp
       .then(() => {
         onSubmit(email, password, name, avatar);
         closeActiveModal();
+      })
+      .catch((err) => console.log(err));
+    e.preventDefault();
+  };
+
+  const handleLoginSubmit = (e) => {
+    api.signIn
+      .then(() => {
+        onSubmit(email, password);
       })
       .catch((err) => console.log(err));
     e.preventDefault();
@@ -110,6 +112,7 @@ function App() {
         );
       })
       .catch((err) => console.log(err));
+
     api
       .removeCardLike(id, token)
       .then((updatedCard) => {
@@ -119,6 +122,8 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+
+  const isAuthenticated = true;
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -151,13 +156,16 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                  handleCardClick={handleCardClick}
-                  handleCardDelete={handleCardDelete}
-                  onAddNewClick={() => setActiveModal("add-garment")}
-                />
+                <ProtectedRoute isAuthenticated={isAuthenticated} /> >
+                (
+                  <Profile
+                    onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                    handleCardDelete={handleCardDelete}
+                    onAddNewClick={() => setActiveModal("add-garment")}
+                  />
+                )
               }
             />
           </Routes>
