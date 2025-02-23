@@ -14,6 +14,8 @@ function Header({ handleAddClick, weatherData }) {
 
   const { user } = useContext(userContext);
 
+  const avatar = `placeholder for ${user.name.charAt(0)}`;
+
   return (
     <header className="header">
       <Link to="/">
@@ -30,13 +32,16 @@ function Header({ handleAddClick, weatherData }) {
       >
         + Add Clothes
       </button>
-      <Placeholder></Placeholder>
       <div className="header__user-container">
         <Link to="/profile" className="header__link">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+          <p className="header__username">{user.name}</p>
+          <img src={avatar} alt={user.name} className="header__avatar" />
+          <div className="header__avatar-placeholder">
+            {user.name.charAt(0).toUpperCase()}
+          </div>
         </Link>
       </div>
+      <Placeholder />
     </header>
   );
 }
