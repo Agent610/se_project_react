@@ -4,7 +4,7 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
-import userContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -12,9 +12,8 @@ function Header({ handleAddClick, weatherData }) {
     day: "numeric",
   });
 
-  const { user } = useContext(userContext);
-
-  const avatar = `placeholder for ${user.name.charAt(0)}`;
+  const { user = {} } = useContext(CurrentUserContext);
+  const avatar = user.name ? user.name.charAt(0) : "";
 
   return (
     <header className="header">
@@ -35,13 +34,15 @@ function Header({ handleAddClick, weatherData }) {
       <div className="header__user-container">
         <Link to="/profile" className="header__link">
           <p className="header__username">{user.name}</p>
-          <img src={avatar} alt={user.name} className="header__avatar" />
-          <div className="header__avatar-placeholder">
-            {user.name.charAt(0).toUpperCase()}
-          </div>
+          {avatar ? (
+            <img src={avatar} alt={user.name} className="header__avatar" />
+          ) : (
+            <div className="header__avatar-placeholder">
+              {user.name ? user.name.charAt(0).toUpperCase() : ""}
+            </div>
+          )}
         </Link>
       </div>
-      <Placeholder />
     </header>
   );
 }

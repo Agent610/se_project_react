@@ -1,7 +1,14 @@
 //import "./Modal.css";
 import CloseButton from "../../assets/Close-Button.png";
+import selectedCard from "../App/App";
+import currentUser from "../App/App";
+
+// const itemDeleteButtonClassname = `modal__delete ${
+//   isOwn ? "" : "modal__delete_hidden"
+// }`;
 
 function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
+  const isOwn = selectedCard.owner === currentUser._id;
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -16,7 +23,7 @@ function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
             <button
               onClick={() => handleCardDelete(card)}
               type="button"
-              className="card__delete"
+              className="modal__delete"
               onClose={onClose}
             >
               Delete item
