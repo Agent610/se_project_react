@@ -31,7 +31,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
         <input
           type="email"
           className="modal__input"
-          id="email"
+          id="register-email"
           placeholder="Email"
           onChange={handleEmailOnChange}
           value={email}
@@ -42,7 +42,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
         <input
           type="password"
           className="modal__input"
-          id="password"
+          id="register-password"
           placeholder="Password"
           onChange={handlePasswordOnChange}
           value={password}
@@ -53,7 +53,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="register-name"
           placeholder="Name"
           onChange={handleNameOnChange}
           value={name}
