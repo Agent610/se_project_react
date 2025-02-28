@@ -16,6 +16,10 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectRoute/ProtectedRoute";
+//import { Switch, Route } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
+//ADD Auth.js
+//ADD API.Js
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -54,8 +58,8 @@ function App() {
   useEffect(() => {
     api
       .getItemList()
-      .then((items) => {
-        setClothingItems(items.data.reverse());
+      .then(({ data }) => {
+        setClothingItems(data.reverse());
       })
       .catch((err) => console.log(err));
   }, []);
