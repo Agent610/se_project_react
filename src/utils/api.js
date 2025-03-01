@@ -1,4 +1,6 @@
-const baseUrl = "http://localhost:3000";
+export const baseUrl = "http://localhost:3001";
+
+const token = localStorage.getItem("jwt");
 
 // const handleServerResponse = (res) => {
 //   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -35,43 +37,25 @@ const removeItem = (id) => {
   }).then(handleServerResponse);
 };
 
-const signUp = ({ email, password, name, avatar }) => {
-  return fetch(`${baseUrl}/signUp`, {
+const addCardLike = (id) => {
+  return fetch(`${baseUrl}/likes/${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ email, password, name, avatar }),
+    body: JSON.stringify({ id }),
   });
 };
 
-const signIn = ({ email, password }) => {
-  return fetch(`${baseUrl}/signIn`, {
+const removeCardLike = (id) => {
+  return fetch(`${baseUrl}/likes/${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ email, password }),
-  });
-};
-
-const addCardLike = ({ id, token }) => {
-  return fetch(`${baseUrl}/likes`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id, token }),
-  });
-};
-
-const removeCardLike = ({ id, token }) => {
-  return fetch(`${baseUrl}/likes`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id, token }),
+    body: JSON.stringify({ id }),
   });
 };
 
@@ -79,8 +63,8 @@ const api = {
   getItemList,
   addItem,
   removeItem,
-  signUp,
-  signIn,
+  //signUp,
+  //signIn,
   addCardLike,
   removeCardLike,
 };

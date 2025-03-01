@@ -8,7 +8,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/api";
@@ -16,10 +16,11 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectRoute/ProtectedRoute";
-//import { Switch, Route } from "react-router-dom";
-//import { useHistory } from "react-router-dom";
+import { getToken } from "../../utils/auth";
 //ADD Auth.js
 //ADD API.Js
+//import { Switch, Route } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -34,6 +35,9 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
 
   console.log(clothingItems);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({});
 
   const [currentUser, setCurrentUserContext] = useState("");
 
@@ -87,22 +91,27 @@ function App() {
   };
 
   const handleRegisterSubmit = (e) => {
-    api.signUp
-      .then(() => {
-        onSubmit(email, password, name, avatar);
+    e.preventDefault();
+    api
+      .signUp({ email, password, name, avatar })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
         closeActiveModal();
       })
       .catch((err) => console.log(err));
-    e.preventDefault();
   };
 
   const handleLoginSubmit = (e) => {
-    api.signIn
-      .then(() => {
-        onSubmit(email, password);
+    e.preventDefault();
+    api
+      .signIn({ email, password })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
+        closeActiveModal();
       })
       .catch((err) => console.log(err));
-    e.preventDefault();
   };
 
   const handleCardLike = ({ id, isLiked }) => {
@@ -127,7 +136,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const isAuthenticated = true;
+  //const isAuthenticated = true;
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -136,6 +145,18 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.err);
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      getToken(token)
+        .then((user) => {
+          setIsLoggedIn(true);
+          setUserData(user);
+        })
+        .catch((err) => console.error(err));
+    }
   }, []);
 
   return (
@@ -160,7 +181,7 @@ function App() {
             <Route
               path="/profile"
               element={
-                <ProtectedRoute isAuthenticated={isAuthenticated} /> >
+                <ProtectedRoute isLoggedIn={isLoggedIn} /> >
                 (
                   <Profile
                     onCardClick={handleCardClick}
@@ -170,6 +191,22 @@ function App() {
                     onAddNewClick={() => setActiveModal("add-garment")}
                   />
                 )
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <div className="loginContainer">
+                  <LoginModal />
+                </div>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <div className="registerContainer">
+                  <RegisterModal />
+                </div>
               }
             />
           </Routes>
