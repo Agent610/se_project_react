@@ -13,7 +13,7 @@ function Header({ handleAddClick, weatherData }) {
   });
 
   const { user = {} } = useContext(CurrentUserContext);
-  const avatar = user.name ? user.name.charAt(0) : "";
+  const avatar = user.avatar || "";
 
   return (
     <header className="header">
@@ -21,7 +21,11 @@ function Header({ handleAddClick, weatherData }) {
         <img className="header__logo" src={logo} alt="logo" />
       </Link>
       <p className="header__date-and-location">
-        {currentDate}, {weatherData.city}
+        {new Date().toLocaleDateString("default", {
+          month: "long",
+          day: "numeric",
+        })}
+        ,{weatherData.city}
       </p>
       <ToggleSwitch />
       <button
@@ -33,8 +37,12 @@ function Header({ handleAddClick, weatherData }) {
       </button>
       <div className="header__user-container">
         <Link to="/profile" className="header__link">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+          <p className="header__username">{user.name}</p>
+          <img
+            src={avatar || "placeholder.png"}
+            alt={user.name}
+            className="header__avatar"
+          />
           <div className="header__avatar-placeholder">
             {user.name ? user.name.charAt(0).toUpperCase() : ""}
           </div>
