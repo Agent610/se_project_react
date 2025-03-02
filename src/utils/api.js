@@ -63,8 +63,6 @@ const api = {
   getItemList,
   addItem,
   removeItem,
-  //signUp,
-  //signIn,
   addCardLike,
   removeCardLike,
 };

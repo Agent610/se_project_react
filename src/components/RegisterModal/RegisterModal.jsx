@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { Link } from "react-router-dom";
 
 const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
   const [email, setEmail] = useState("");
@@ -25,7 +26,6 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       isOpen={isOpen}
       onSubmit={handleFormSubmit}
     >
-      <button> Log in</button>
       <label htmlFor="register-email" className="modal__label">
         Email{" "}
         <input
@@ -70,6 +70,17 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           value={avatar}
         />
       </label>
+      <div className="register__button">
+        <button type="submit" className="register__link">
+          {" "}
+          Sign up
+        </button>
+      </div>
+      <div className="register__signin">
+        <Link to="login" className="register__login-link">
+          Log in
+        </Link>
+      </div>
     </ModalWithForm>
   );
 };

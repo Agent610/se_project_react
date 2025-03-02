@@ -8,7 +8,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/api";
@@ -38,6 +38,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
+  const Navigate = useNavigate();
 
   const [currentUser, setCurrentUserContext] = useState("");
 
@@ -91,18 +92,22 @@ function App() {
   };
 
   const handleRegisterSubmit = (e) => {
-    e.preventDefault();
+    if (password === confirmPassword) e.preventDefault();
     api
       .signUp({ email, password, name, avatar })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         closeActiveModal();
+        Navigate("/login");
       })
       .catch((err) => console.log(err));
   };
 
   const handleLoginSubmit = (e) => {
+    if (!email || !password) {
+      return;
+    }
     e.preventDefault();
     api
       .signIn({ email, password })
@@ -110,6 +115,7 @@ function App() {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         closeActiveModal();
+        Navigate("/Profile");
       })
       .catch((err) => console.log(err));
   };
@@ -197,7 +203,7 @@ function App() {
               path="/login"
               element={
                 <div className="loginContainer">
-                  <LoginModal />
+                  <LoginModal handleLogin={handleLoginSubmit} />
                 </div>
               }
             />
@@ -205,6 +211,7 @@ function App() {
               path="/register"
               element={
                 <div className="registerContainer">
+                  <RegisterModal handleRegistration={handleRegisterSubmit} />
                   <RegisterModal />
                 </div>
               }
