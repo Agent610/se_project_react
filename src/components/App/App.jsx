@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -47,6 +47,15 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const handleLogin = () => {
+    console.log("loggin in");
+    setActiveModal("login");
+  };
+
+  const handleRegister = () => {
+    console.log("registering");
+    setActiveModal("register");
+  };
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -167,7 +176,12 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="app__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Header
+            handleAddClick={handleAddClick}
+            weatherData={weatherData}
+            handleLogin={handleLogin}
+            handleRegister={handleRegister}
+          />
           <Routes>
             <Route
               path="/"
@@ -216,7 +230,8 @@ function App() {
         </div>
         <ItemModal
           handleCardDelete={handleCardDelete}
-          activeModal={activeModal}
+          // activeModal={activeModal}
+          isOpen={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
           isLiked={handleCardLike}
@@ -229,12 +244,14 @@ function App() {
         />
         <LoginModal
           onClose={closeActiveModal}
-          activeModal={activeModal}
+          // activeModal={activeModal}
+          isOpen={activeModal === "login"}
           onSubmit={handleLoginSubmit}
         />
         <RegisterModal
           onClose={closeActiveModal}
-          activeModal={activeModal}
+          // activeModal={activeModal}
+          isOpen={activeModal === "register"}
           onSubmit={handleRegisterSubmit}
         />
       </CurrentTemperatureUnitContext.Provider>

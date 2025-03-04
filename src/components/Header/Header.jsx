@@ -6,7 +6,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, handleLogin, handleRegister }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -35,6 +35,8 @@ function Header({ handleAddClick, weatherData }) {
       >
         + Add Clothes
       </button>
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleRegister}>Register</button>
       <div className="header__user-container">
         <Link to="/profile" className="header__link">
           <p className="header__username">{user.name}</p>
