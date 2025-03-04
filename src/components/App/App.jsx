@@ -8,7 +8,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/api";
@@ -17,10 +17,6 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectRoute/ProtectedRoute";
 import { getToken } from "../../utils/auth";
-//ADD Auth.js
-//ADD API.Js
-//import { Switch, Route } from "react-router-dom";
-//import { useHistory } from "react-router-dom";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
