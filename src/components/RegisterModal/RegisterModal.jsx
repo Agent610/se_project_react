@@ -76,11 +76,11 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           Sign up
         </button>
       </div>
-      <div className="register__signin">
+      {/*<div className="register__signin">
         <Link to="login" className="register__login-link">
           Log in
-        </Link>
-      </div>
+        </Link> 
+      </div> */}
     </ModalWithForm>
   );
 };
