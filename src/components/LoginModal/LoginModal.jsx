@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { Link } from "react-router-dom";
+import "./LoginModal.css";
 
-const LoginModal = ({ isOpen, onSubmit, onClose }) => {
+const LoginModal = ({ isOpen, onSubmit, onClose, register }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,7 +23,6 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
       isOpen={isOpen}
       onSubmit={handleFormSubmit}
     >
-      <button>Sign up</button>
       <label htmlFor="login-email" className="modal__label">
         Email{" "}
         <input
@@ -45,11 +45,14 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
           value={password}
         />
       </label>
-      <div className="login__signup">
-        <Link to="/register" className="login__link">
-          Sign up
-        </Link>
-      </div>
+      <button
+        type="button"
+        className="login__link"
+        link="register"
+        onClick={register}
+      >
+        or Sign up
+      </button>
     </ModalWithForm>
   );
 };
