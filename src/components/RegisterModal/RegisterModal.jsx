@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { Link } from "react-router-dom";
+import "./RegisterModal.css";
 
-const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
+const RegisterModal = ({ isOpen, onSubmit, onClose, login }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Sign Up"
+      //buttonText="Sign Up"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleFormSubmit}
@@ -29,6 +30,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       <label htmlFor="register-email" className="modal__label">
         Email{" "}
         <input
+          required
           type="email"
           className="modal__input"
           id="register-email"
@@ -40,6 +42,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       <label htmlFor="register-password" className="modal__label">
         Password{" "}
         <input
+          required
           type="password"
           className="modal__input"
           id="register-password"
@@ -51,6 +54,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       <label htmlFor="register-name" className="modal__label">
         Name{" "}
         <input
+          required
           type="text"
           className="modal__input"
           id="register-name"
@@ -62,6 +66,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       <label htmlFor="avatar-id" className="modal__label">
         Avatar URL{" "}
         <input
+          required
           type="url"
           className="modal__input"
           id="avatar-id"
@@ -70,17 +75,14 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           value={avatar}
         />
       </label>
-      <div className="register__button">
-        <button type="submit" className="register__link">
-          {" "}
-          Sign up
-        </button>
-      </div>
-      {/*<div className="register__signin">
-        <Link to="login" className="register__login-link">
-          Log in
-        </Link> 
-      </div> */}
+      <button
+        type="button"
+        className="register__link"
+        link="login"
+        onClick={login}
+      >
+        Sign up or Login{" "}
+      </button>
     </ModalWithForm>
   );
 };
