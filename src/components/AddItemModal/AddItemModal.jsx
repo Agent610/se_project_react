@@ -32,6 +32,7 @@ const AddItemModal = ({ isOpen, onSubmit, onClose }) => {
           placeholder="Name"
           onChange={handleNameOnChange}
           value={name}
+          required
         />
       </label>
       <label htmlFor="imageUrl" className="modal__label">
@@ -43,6 +44,7 @@ const AddItemModal = ({ isOpen, onSubmit, onClose }) => {
           placeholder="Image URL"
           onChange={handleImageUrlOnChange}
           value={imageUrl}
+          required
         />
       </label>
       <fieldset className="modal__radio-buttons">

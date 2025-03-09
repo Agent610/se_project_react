@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { Link } from "react-router-dom";
 import "./RegisterModal.css";
 
-const RegisterModal = ({ isOpen, onSubmit, onClose, login }) => {
+const RegisterModal = ({ isOpen, onSubmit, onClose, handleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -30,56 +30,56 @@ const RegisterModal = ({ isOpen, onSubmit, onClose, login }) => {
       <label htmlFor="register-email" className="modal__label">
         Email{" "}
         <input
-          required
           type="email"
           className="modal__input"
           id="register-email"
           placeholder="Email"
           onChange={handleEmailOnChange}
           value={email}
+          required
         />
       </label>
       <label htmlFor="register-password" className="modal__label">
         Password{" "}
         <input
-          required
           type="password"
           className="modal__input"
           id="register-password"
           placeholder="Password"
           onChange={handlePasswordOnChange}
           value={password}
+          required
         />
       </label>
       <label htmlFor="register-name" className="modal__label">
         Name{" "}
         <input
-          required
           type="text"
           className="modal__input"
           id="register-name"
           placeholder="Name"
           onChange={handleNameOnChange}
           value={name}
+          required
         />
       </label>
       <label htmlFor="avatar-id" className="modal__label">
         Avatar URL{" "}
         <input
-          required
           type="url"
           className="modal__input"
           id="avatar-id"
           placeholder="Avatar URL"
           onChange={handleAvatarOnChange}
           value={avatar}
+          required
         />
       </label>
       <button
         type="button"
         className="register__link"
         link="login"
-        onClick={login}
+        onClick={handleLogin}
       >
         Sign up or Login{" "}
       </button>

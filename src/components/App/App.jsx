@@ -1,4 +1,4 @@
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -17,6 +17,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectRoute/ProtectedRoute";
 import { getToken } from "../../utils/auth";
+//add an import for the EditProfile
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -25,17 +26,14 @@ function App() {
     city: "",
   });
 
+  const navigate = useNavigate();
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-
-  console.log(clothingItems);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
-  const Navigate = useNavigate();
-
   const [currentUser, setCurrentUserContext] = useState("");
 
   const handleCardClick = (card) => {
@@ -48,14 +46,19 @@ function App() {
   };
 
   const handleLogin = () => {
-    console.log("loggin in");
     setActiveModal("login");
   };
 
   const handleRegister = () => {
-    console.log("registering");
     setActiveModal("register");
   };
+
+  //add the const for edit profile
+  // here I'll help you get started
+  // const (edit) = () => {
+  // sAM("edit")}
+  //cmon that's helpful enough GENIUS !
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -78,7 +81,7 @@ function App() {
     api
       .addItem(item)
       .then((item) => {
-        console.log(item);
+        //console.log(item);
         setClothingItems([item, ...clothingItems]);
         closeActiveModal();
       })
@@ -86,7 +89,7 @@ function App() {
   };
 
   const handleCardDelete = (card) => {
-    console.log(`Deleting item with id: ${card._id}`);
+    //console.log(`Deleting item with id: ${card._id}`);
     api
       .removeItem(card._id)
       .then(() => {
@@ -96,34 +99,38 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleRegisterSubmit = (e) => {
-    if (password === confirmPassword) e.preventDefault();
+  const handleRegisterSubmit = ({ email, password, name, avatar }) => {
     api
       .signUp({ email, password, name, avatar })
-      .then((res) => {
-        localStorage.setItem("jwt", res.token);
+      .then(() => {
         setIsLoggedIn(true);
         closeActiveModal();
-        Navigate("/login");
+        handleLoginSubmit({ email, password });
       })
       .catch((err) => console.log(err));
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = ({ email, password }) => {
     if (!email || !password) {
       return;
     }
-    e.preventDefault();
     api
       .signIn({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         closeActiveModal();
-        Navigate("/Profile");
+        navigate("/Profile");
       })
       .catch((err) => console.log(err));
   };
+
+  // Add a const for editing the profile
+  // const handleEdit
+
+  //Add a const for logging out
+  // const handleSignOut =() => {}
+  // similar to handleLoginSubmit
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
@@ -136,7 +143,6 @@ function App() {
         );
       })
       .catch((err) => console.log(err));
-
     api
       .removeCardLike(id, token)
       .then((updatedCard) => {
@@ -195,7 +201,7 @@ function App() {
               }
             />
             <Route
-              path="/profile"
+              path="/Profile"
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn} /> >
                 (
