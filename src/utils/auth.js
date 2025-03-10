@@ -31,6 +31,8 @@ export const getToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
 };
 

@@ -89,7 +89,6 @@ function App() {
   };
 
   const handleCardDelete = (card) => {
-    //console.log(`Deleting item with id: ${card._id}`);
     api
       .removeItem(card._id)
       .then(() => {
@@ -104,8 +103,8 @@ function App() {
       .signUp({ email, password, name, avatar })
       .then(() => {
         setIsLoggedIn(true);
-        closeActiveModal();
         handleLoginSubmit({ email, password });
+        closeActiveModal();
       })
       .catch((err) => console.log(err));
   };
@@ -187,6 +186,7 @@ function App() {
             weatherData={weatherData}
             handleLogin={handleLogin}
             handleRegister={handleRegister}
+            isLoggedIn={isLoggedIn}
           />
           <Routes>
             <Route
@@ -197,6 +197,7 @@ function App() {
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   handleCardDelete={handleCardDelete}
+                  isLoggedIn={isLoggedIn}
                 />
               }
             />
@@ -206,11 +207,15 @@ function App() {
                 <ProtectedRoute isLoggedIn={isLoggedIn} /> >
                 (
                   <Profile
+                    handleAddClick={handleAddClick}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
                     handleCardDelete={handleCardDelete}
                     onAddNewClick={() => setActiveModal("add-garment")}
+                    handleLogin={handleLogin}
+                    handleRegister={handleRegister}
+                    isLoggedIn={isLoggedIn}
                   />
                 )
               }
