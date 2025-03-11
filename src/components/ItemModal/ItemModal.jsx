@@ -5,9 +5,11 @@ import currentUser from "../App/App";
 
 function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
   const isOwn = selectedCard.owner === currentUser._id;
+
   const itemDeleteButtonClassname = `modal__delete ${
     isOwn ? "" : "modal__delete_hidden"
   }`;
+
   return (
     <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
@@ -26,7 +28,6 @@ function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
               onClose={onClose}
             >
               Delete item
-              {/* <p className="card__delete-caption"> Delete item</p> */}
             </button>
           )}
         </div>
