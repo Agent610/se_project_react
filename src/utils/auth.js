@@ -36,6 +36,14 @@ export const getToken = (token) => {
   });
 };
 
-//Add edit Profile Logic here
-
-//export const (whatever you name edit )
+export const editProfile = ({ name, avatar }) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
+};

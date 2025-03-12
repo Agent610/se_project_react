@@ -17,7 +17,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectRoute/ProtectedRoute";
 import { getToken } from "../../utils/auth";
-//add an import for the EditProfile
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -34,7 +34,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
-  const [currentUser, setCurrentUserContext] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -53,11 +53,9 @@ function App() {
     setActiveModal("register");
   };
 
-  //add the const for edit profile
-  // here I'll help you get started
-  // const (edit) = () => {
-  // sAM("edit")}
-  //cmon that's helpful enough GENIUS !
+  const handleEdit = () => {
+    setActiveModal("edit");
+  };
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -81,7 +79,6 @@ function App() {
     api
       .addItem(item)
       .then((item) => {
-        //console.log(item);
         setClothingItems([item, ...clothingItems]);
         closeActiveModal();
       })
@@ -124,12 +121,25 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  // Add a const for editing the profile
-  // const handleEdit
+  const handleEditSubmit = ({ name, avatar }) => {
+    api.editProfile(
+      { name, avatar }
+        .then(() => {
+          setIsLoggedIn(true);
+          setCurrentUser((previousUser) => {
+            previousUser, name, avatar;
+          });
+          closeActiveModal();
+          navigate("/profile");
+        })
+        .catch((err) => console.log(err))
+    );
+  };
 
-  //Add a const for logging out
-  // const handleSignOut =() => {}
-  // similar to handleLoginSubmit
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt", res.token);
+  };
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
@@ -217,6 +227,8 @@ function App() {
                       handleLogin={handleLogin}
                       handleRegister={handleRegister}
                       isLoggedIn={isLoggedIn}
+                      handleEdit={handleEdit}
+                      handleLogout={handleLogout}
                     />
                   )
                 }
@@ -266,6 +278,12 @@ function App() {
             onSubmit={handleRegisterSubmit}
             handleLogin={handleLogin}
             handleRegister={handleRegister}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit"}
+            onClose={closeActiveModal}
+            handleEdit={handleEdit}
+            onSubmit={handleEditSubmit}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>

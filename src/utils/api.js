@@ -50,7 +50,7 @@ const addCardLike = (id) => {
 
 const removeCardLike = (id) => {
   return fetch(`${baseUrl}/likes/${id}`, {
-    method: "POST",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
