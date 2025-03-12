@@ -37,7 +37,7 @@ const removeItem = (id) => {
   }).then(handleServerResponse);
 };
 
-const addCardLike = (id) => {
+const addCardLike = (id, token) => {
   return fetch(`${baseUrl}/likes/${id}`, {
     method: "POST",
     headers: {
@@ -48,7 +48,7 @@ const addCardLike = (id) => {
   });
 };
 
-const removeCardLike = (id) => {
+const removeCardLike = (id, token) => {
   return fetch(`${baseUrl}/likes/${id}`, {
     method: "DELETE",
     headers: {

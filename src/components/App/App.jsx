@@ -16,7 +16,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectRoute/ProtectedRoute";
-import { getToken } from "../../utils/auth";
+import { getToken } from "../../utils/token";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
@@ -116,7 +116,7 @@ function App() {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         closeActiveModal();
-        navigate("/Profile");
+        navigate("/profile");
       })
       .catch((err) => console.log(err));
   };
@@ -134,11 +134,6 @@ function App() {
         })
         .catch((err) => console.log(err))
     );
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("jwt", res.token);
   };
 
   const handleCardLike = ({ id, isLiked }) => {
@@ -160,6 +155,12 @@ function App() {
         );
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt", res.token);
+    setCurrentUser({});
   };
 
   //const isAuthenticated = true;
@@ -186,7 +187,7 @@ function App() {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={currentUser} isLoggedIn={""}>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -213,7 +214,7 @@ function App() {
                 }
               />
               <Route
-                path="/Profile"
+                path="/profile"
                 element={
                   <ProtectedRoute isLoggedIn={isLoggedIn} /> >
                   (
@@ -223,7 +224,6 @@ function App() {
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
                       handleCardDelete={handleCardDelete}
-                      onAddNewClick={() => setActiveModal("add-garment")}
                       handleLogin={handleLogin}
                       handleRegister={handleRegister}
                       isLoggedIn={isLoggedIn}

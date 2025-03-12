@@ -6,13 +6,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({
-  handleAddClick,
-  weatherData,
-  handleLogin,
-  handleRegister,
-  isLoggedIn,
-}) {
+function Header({ handleAddClick, weatherData, handleLogin, handleRegister }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",

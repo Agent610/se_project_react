@@ -3,6 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
+  const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 
@@ -13,8 +14,6 @@ const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
     e.preventDefault();
     onSubmit({ name, avatar });
   }
-
-  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     if (currentUser) {
@@ -57,4 +56,5 @@ const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
     </ModalWithForm>
   );
 };
+
 export default EditProfileModal;

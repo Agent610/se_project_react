@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { Link } from "react-router-dom";
 import "./RegisterModal.css";
 
 const RegisterModal = ({ isOpen, onSubmit, onClose, handleLogin }) => {
@@ -78,7 +77,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose, handleLogin }) => {
       <button
         type="button"
         className="register__link"
-        link="login"
+        to="login"
         onClick={handleLogin}
       >
         or Login{" "}

@@ -9,6 +9,7 @@ function Profile({
   onAddNewClick,
   cards,
   clothingItems,
+  isLoggedIn,
 }) {
   return (
     <div className="profile">

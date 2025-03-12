@@ -1,13 +1,16 @@
 //import "./Modal.css";
 import CloseButton from "../../assets/Close-Button.png";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import selectedCard from "../App/App";
 import currentUser from "../App/App";
 
 function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
+  const currentUser = useContext(CurrentUserContext);
+
   const isOwn = selectedCard.owner === currentUser._id;
 
   const itemDeleteButtonClassname = `modal__delete ${
-    isOwn ? "" : "modal__delete_hidden"
+    isOwn ? "modal__delete-button_visible" : "modal__delete-button_hidden"
   }`;
 
   return (

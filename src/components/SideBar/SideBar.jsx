@@ -1,15 +1,12 @@
-import avatar from "../../assets/avatar.png";
-//import { NavLink, useNavigate } from "react-router-dom";
-//import { removeToken } from "../../utils/token";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext, useState } from "react";
+import avatar from "../../assets/avatar.png";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function SideBar(handleLogout) {
+function SideBar() {
   const currentUser = useContext(CurrentUserContext);
 
   const SideBar = useState(true);
 }
-
 return (
   <div className="sidebar">
     <img className="sidebar__avatar" src={avatar} alt="Avatar" />
