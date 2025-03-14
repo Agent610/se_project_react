@@ -1,10 +1,11 @@
 import { baseUrl } from "./api";
 
-export const signUp = ({ email, password, name, avatar }) => {
-  return fetch(`${baseUrl}/signUp`, {
+export const signUp = ({ email, password, name, avatar }, token) => {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ email, password, name, avatar }),
   }).then((res) => {
@@ -12,11 +13,12 @@ export const signUp = ({ email, password, name, avatar }) => {
   });
 };
 
-export const signIn = ({ email, password }) => {
-  return fetch(`${baseUrl}/signIn`, {
+export const signIn = ({ email, password }, token) => {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ email, password }),
   }).then((res) => {
@@ -24,7 +26,7 @@ export const signIn = ({ email, password }) => {
   });
 };
 
-export const getToken = (token) => {
+export const getCurrentUser = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {

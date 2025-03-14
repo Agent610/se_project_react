@@ -6,7 +6,13 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData, handleLogin, handleRegister }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  handleSigninClick,
+  handleSignupClick,
+  isLoggedIn,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -36,23 +42,28 @@ function Header({ handleAddClick, weatherData, handleLogin, handleRegister }) {
         + Add Clothes
       </button>
       <div className="header__user-container">
-        <Link to="/profile" className="header__link">
-          <p className="header__username">{user.name}</p>
-          <img
-            src={avatar || "placeholder.png"}
-            alt={user.name}
-            className="header__avatar"
-          />
-          <div className="header__avatar-placeholder">
-            {user.name ? user.name.charAt(0).toUpperCase() : ""}
-          </div>
-        </Link>
-        <button className="header__login" onClick={handleLogin}>
-          Login
-        </button>
-        <button className="header__register" onClick={handleRegister}>
-          Register
-        </button>
+        {isLoggedIn ? (
+          <Link to="/profile" className="header__link">
+            <p className="header__username">{user.name}</p>
+            <img
+              src={avatar || "placeholder.png"}
+              alt={user.name}
+              className="header__avatar"
+            />
+            <div className="header__avatar-placeholder">
+              {user.name ? user.name.charAt(0).toUpperCase() : ""}
+            </div>
+          </Link>
+        ) : (
+          <>
+            <button className="header__login" onClick={handleSigninClick}>
+              Login
+            </button>
+            <button className="header__register" onClick={handleSignupClick}>
+              Register
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

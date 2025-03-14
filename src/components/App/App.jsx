@@ -11,7 +11,15 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
+// import {
+//   getItemList,
+//   addItem,
+//   removeItem,
+//   addCardLike,
+//   removeCardLike,
+// } from "../../utils/api";
 import api from "../../utils/api";
+import { signIn, signUp, editProfile, getCurrentUser } from "../../utils/auth";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -45,11 +53,11 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const handleLogin = () => {
+  const handleSigninClick = () => {
     setActiveModal("login");
   };
 
-  const handleRegister = () => {
+  const handleSignupClick = () => {
     setActiveModal("register");
   };
 
@@ -96,8 +104,7 @@ function App() {
   };
 
   const handleRegisterSubmit = ({ email, password, name, avatar }) => {
-    api
-      .signUp({ email, password, name, avatar })
+    signUp({ email, password, name, avatar })
       .then(() => {
         setIsLoggedIn(true);
         handleLoginSubmit({ email, password });
@@ -110,8 +117,7 @@ function App() {
     if (!email || !password) {
       return;
     }
-    api
-      .signIn({ email, password })
+    signIn({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
@@ -122,7 +128,7 @@ function App() {
   };
 
   const handleEditSubmit = ({ name, avatar }) => {
-    api.editProfile(
+    editProfile(
       { name, avatar }
         .then(() => {
           setIsLoggedIn(true);
@@ -175,9 +181,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
+    const token = getToken();
     if (token) {
-      getToken(token)
+      getCurrentUser(token)
         .then((user) => {
           setIsLoggedIn(true);
           setUserData(user);
@@ -196,8 +202,8 @@ function App() {
             <Header
               handleAddClick={handleAddClick}
               weatherData={weatherData}
-              handleLogin={handleLogin}
-              handleRegister={handleRegister}
+              handleSigninClick={handleSigninClick}
+              handleSignupClick={handleSignupClick}
               isLoggedIn={isLoggedIn}
             />
             <Routes>
@@ -224,8 +230,8 @@ function App() {
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
                       handleCardDelete={handleCardDelete}
-                      handleLogin={handleLogin}
-                      handleRegister={handleRegister}
+                      handleSigninClick={handleSigninClick}
+                      handleSignupClick={handleSignupClick}
                       isLoggedIn={isLoggedIn}
                       handleEdit={handleEdit}
                       handleLogout={handleLogout}
@@ -252,6 +258,7 @@ function App() {
               />
             </Routes>
           </div>
+
           <ItemModal
             isOpen={activeModal === "preview"}
             handleCardDelete={handleCardDelete}
@@ -259,6 +266,7 @@ function App() {
             isLiked={handleCardLike}
             onClose={closeActiveModal}
           />
+
           <Footer />
           <AddItemModal
             isOpen={activeModal === "add-garment"}
@@ -269,15 +277,15 @@ function App() {
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onSubmit={handleLoginSubmit}
-            handleLogin={handleLogin}
-            handleRegister={handleRegister}
+            handleSigninClick={handleSigninClick}
+            handleSignupClick={handleSignupClick}
           />
           <RegisterModal
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onSubmit={handleRegisterSubmit}
-            handleLogin={handleLogin}
-            handleRegister={handleRegister}
+            handleSigninClick={handleSigninClick}
+            handleSignupClick={handleSignupClick}
           />
           <EditProfileModal
             isOpen={activeModal === "edit"}

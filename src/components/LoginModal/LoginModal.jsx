@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-const LoginModal = ({ isOpen, onSubmit, onClose, handleRegister }) => {
+const LoginModal = ({ isOpen, onSubmit, onClose, handleSignupClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -46,7 +46,7 @@ const LoginModal = ({ isOpen, onSubmit, onClose, handleRegister }) => {
           required
         />
       </label>
-      <button type="button" className="login__link" onClick={handleRegister}>
+      <button type="button" className="login__link" onClick={handleSignupClick}>
         or Sign up
       </button>
     </ModalWithForm>
