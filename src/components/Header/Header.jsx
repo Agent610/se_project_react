@@ -56,12 +56,14 @@ function Header({
           </Link>
         ) : (
           <>
-            <button className="header__login" onClick={handleSigninClick}>
-              Login
-            </button>
-            <button className="header__register" onClick={handleSignupClick}>
-              Register
-            </button>
+            <div className="header__user">
+              <button className="header__login" onClick={handleSigninClick}>
+                Login
+              </button>
+              <button className="header__register" onClick={handleSignupClick}>
+                Register
+              </button>
+            </div>
           </>
         )}
       </div>

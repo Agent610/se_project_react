@@ -11,13 +11,6 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-// import {
-//   getItemList,
-//   addItem,
-//   removeItem,
-//   addCardLike,
-//   removeCardLike,
-// } from "../../utils/api";
 import api from "../../utils/api";
 import { signIn, signUp, editProfile, getCurrentUser } from "../../utils/auth";
 import LoginModal from "../LoginModal/LoginModal";
@@ -61,7 +54,7 @@ function App() {
     setActiveModal("register");
   };
 
-  const handleEdit = () => {
+  const handleEditClick = () => {
     setActiveModal("edit");
   };
 
@@ -233,7 +226,7 @@ function App() {
                       handleSigninClick={handleSigninClick}
                       handleSignupClick={handleSignupClick}
                       isLoggedIn={isLoggedIn}
-                      handleEdit={handleEdit}
+                      handleEditClick={handleEditClick}
                       handleLogout={handleLogout}
                     />
                   )
@@ -290,7 +283,7 @@ function App() {
           <EditProfileModal
             isOpen={activeModal === "edit"}
             onClose={closeActiveModal}
-            handleEdit={handleEdit}
+            handleEditClick={handleEditClick}
             onSubmit={handleEditSubmit}
           />
         </CurrentTemperatureUnitContext.Provider>

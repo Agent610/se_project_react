@@ -24,6 +24,7 @@ const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
 
   return (
     <ModalWithForm
+      title="Change Profile Data"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleFormSubmit}

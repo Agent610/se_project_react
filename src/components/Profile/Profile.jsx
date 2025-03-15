@@ -10,11 +10,17 @@ function Profile({
   cards,
   clothingItems,
   isLoggedIn,
+  handleLogout,
+  handleEditClick,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar />
+        <SideBar
+          isLoggedIn={isLoggedIn}
+          handleLogout={handleLogout}
+          handleEditClick={handleEditClick}
+        />
       </section>
       <section className="profile__clothes-section">
         <ClothesSection
@@ -23,7 +29,7 @@ function Profile({
           onAddNewClick={onAddNewClick}
           sectionData={cards}
           clothingItems={clothingItems}
-          isLoggedIn={false}
+          isLoggedIn={isLoggedIn}
         />
       </section>
     </div>
