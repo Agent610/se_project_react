@@ -70,8 +70,8 @@ function App() {
   useEffect(() => {
     api
       .getItemList()
-      .then(({ data }) => {
-        setClothingItems(data.reverse());
+      .then(({ item }) => {
+        setClothingItems(item.reverse());
       })
       .catch((err) => console.log(err));
   }, []);
@@ -99,7 +99,7 @@ function App() {
   const handleRegisterSubmit = ({ email, password, name, avatar }) => {
     signUp({ email, password, name, avatar })
       .then(() => {
-        setIsLoggedIn(true);
+        //setIsLoggedIn(true);
         handleLoginSubmit({ email, password });
         closeActiveModal();
       })
@@ -156,7 +156,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleLogout = () => {
+  const handleLogout = (res) => {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt", res.token);
     setCurrentUser({});
@@ -215,8 +215,7 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute isLoggedIn={isLoggedIn} /> >
-                  (
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
                       handleAddClick={handleAddClick}
                       onCardClick={handleCardClick}
@@ -229,7 +228,7 @@ function App() {
                       handleEditClick={handleEditClick}
                       handleLogout={handleLogout}
                     />
-                  )
+                  </ProtectedRoute>
                 }
               />
               <Route
