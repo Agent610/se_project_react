@@ -19,6 +19,7 @@ function Header({
   });
 
   const { user = {} } = useContext(CurrentUserContext);
+  //const currentUser = useContext(CurrentUserContext);
   const avatar = user.avatar || "";
 
   return (
@@ -72,3 +73,6 @@ function Header({
 }
 
 export default Header;
+
+// Height 185cm
+// Weight 175lb

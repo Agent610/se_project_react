@@ -186,7 +186,7 @@ function App() {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser} isLoggedIn={isLoggedIn}>
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -231,7 +231,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
+              {/* <Route
                 path="/login"
                 element={
                   <div className="loginContainer">
@@ -247,7 +247,7 @@ function App() {
                     <RegisterModal />
                   </div>
                 }
-              />
+              /> */}
             </Routes>
           </div>
 
