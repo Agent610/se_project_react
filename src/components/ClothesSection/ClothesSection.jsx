@@ -28,7 +28,8 @@ function ClothesSection({
         </button>
       </div>
       <ul className="clothes-section__list">
-        {clothingItems.map((item) => {
+        {userItems.map((item) => {
+          console.log(item);
           return (
             <ItemCard
               key={item._id}

@@ -23,6 +23,8 @@ function ItemCard({ item, onCardClick, onCardDelete, onCardLike }) {
 
   const isLiked = item.likes.some((id) => id === currentUser._id);
 
+  console.log(item);
+
   return (
     <li className="card">
       <h2 className="card__name">{item.name}</h2>

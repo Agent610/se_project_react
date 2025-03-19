@@ -77,8 +77,9 @@ function App() {
   }, []);
 
   const handleAddItemSubmit = (item) => {
+    const token = localStorage.getItem("jwt");
     api
-      .addItem(item)
+      .addItem(item, token)
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
         closeActiveModal();
