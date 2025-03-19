@@ -70,10 +70,10 @@ function App() {
   useEffect(() => {
     api
       .getItemList()
-      .then(({ item }) => {
-        setClothingItems(item.reverse());
+      .then(({ items }) => {
+        setClothingItems(items.reverse());
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Cannot retrieve items", err));
   }, []);
 
   const handleAddItemSubmit = (item) => {
@@ -83,7 +83,7 @@ function App() {
         setClothingItems([item, ...clothingItems]);
         closeActiveModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Cannot add item", err));
   };
 
   const handleCardDelete = (card) => {
@@ -93,7 +93,7 @@ function App() {
         setClothingItems(clothingItems.filter((c) => c._id !== card._id));
         closeActiveModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Cannot delete item", err));
   };
 
   const handleRegisterSubmit = ({ email, password, name, avatar }) => {
@@ -103,7 +103,7 @@ function App() {
         handleLoginSubmit({ email, password });
         closeActiveModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Cannot register user", err));
   };
 
   const handleLoginSubmit = ({ email, password }) => {
@@ -117,22 +117,22 @@ function App() {
         closeActiveModal();
         navigate("/profile");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Cannot log user in", err));
   };
 
   const handleEditSubmit = ({ name, avatar }) => {
-    editProfile(
-      { name, avatar }
-        .then(() => {
-          setIsLoggedIn(true);
-          setCurrentUser((previousUser) => {
-            previousUser, name, avatar;
-          });
-          closeActiveModal();
-          navigate("/profile");
-        })
-        .catch((err) => console.log(err))
-    );
+    editProfile({ name, avatar })
+      .then((data) => {
+        setCurrentUser(data.user);
+        console.log(currentUser);
+        // setIsLoggedIn(true);
+        // setCurrentUser((previousUser) => {
+        //   previousUser, name, avatar;
+        // });
+        closeActiveModal();
+        navigate("/profile");
+      })
+      .catch((err) => console.error("Cannot edit the current user", err));
   };
 
   const handleCardLike = ({ id, isLiked }) => {
@@ -145,7 +145,7 @@ function App() {
           cards.map((item) => (item._id === id ? updatedCard : item))
         );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Cannot like the item", err));
     api
       .removeCardLike(id, token)
       .then((updatedCard) => {
@@ -153,7 +153,7 @@ function App() {
           cards.map((item) => (item._id === id ? updatedCard : item))
         );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Cannot remove the current like", err));
   };
 
   const handleLogout = (res) => {
@@ -181,7 +181,9 @@ function App() {
           setIsLoggedIn(true);
           setUserData(user);
         })
-        .catch((err) => console.error(err));
+        .catch((err) =>
+          console.error("Cannot retrive current user information", err)
+        );
     }
   }, []);
 

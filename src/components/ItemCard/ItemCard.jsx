@@ -32,7 +32,7 @@ function ItemCard({ item, onCardClick, onCardDelete, onCardLike }) {
         src={item.imageUrl}
         alt={item.name}
         onCardLike={handleCardLike}
-        isLiked={handleLike}
+        //isLiked={handleLike}
       />
       {/* <button
         type="button"

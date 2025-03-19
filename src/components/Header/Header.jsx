@@ -18,9 +18,9 @@ function Header({
     day: "numeric",
   });
 
-  const { user = {} } = useContext(CurrentUserContext);
-  //const currentUser = useContext(CurrentUserContext);
-  const avatar = user.avatar || "";
+  //const { user = {} } = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
+  //const avatar = user.avatar || "";
 
   return (
     <header className="header">
@@ -35,25 +35,27 @@ function Header({
         ,{weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-button"
-      >
-        + Add Clothes
-      </button>
       <div className="header__user-container">
         {isLoggedIn ? (
           <Link to="/profile" className="header__link">
-            <p className="header__username">{user.name}</p>
+            <p className="header__username">{currentUser?.name}</p>
             <img
               src={avatar || "placeholder.png"}
-              alt={user.name}
+              alt={currentUser?.name}
               className="header__avatar"
             />
             <div className="header__avatar-placeholder">
-              {user.name ? user.name.charAt(0).toUpperCase() : ""}
+              {currentUser?.name
+                ? currentUser?.name.charAt(0).toUpperCase()
+                : ""}
             </div>
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-button"
+            >
+              + Add Clothes
+            </button>
           </Link>
         ) : (
           <>

@@ -25,11 +25,12 @@ const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
   return (
     <ModalWithForm
       title="Change Profile Data"
+      buttonText="Save Changes"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleFormSubmit}
     >
-      <button>Save Changes</button>
+      {/* <button>Save Changes</button> */}
       <label htmlFor="edit-name" className="modal__label">
         Name{""}
         <input
