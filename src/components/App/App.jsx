@@ -138,23 +138,31 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    !isLiked;
-    api
-      .addCardLike(id, token)
+    // !isLiked;
+    // api
+    //   .addCardLike(id, token)
+    const apiCall = isLiked ? api.removeCardLike : api.addCardLike;
+    apiCall(id, token)
       .then((updatedCard) => {
         setClothingItems((cards) =>
           cards.map((item) => (item._id === id ? updatedCard : item))
         );
       })
-      .catch((err) => console.error("Cannot like the item", err));
-    api
-      .removeCardLike(id, token)
-      .then((updatedCard) => {
-        setClothingItems((cards) =>
-          cards.map((item) => (item._id === id ? updatedCard : item))
-        );
-      })
-      .catch((err) => console.error("Cannot remove the current like", err));
+      // .catch((err) => console.error("Cannot like the item", err));
+      // api
+      //   .removeCardLike(id, token)
+      //   .then((updatedCard) => {
+      //     setClothingItems((cards) =>
+      //       cards.map((item) => (item._id === id ? updatedCard : item))
+      //     );
+      //   })
+      //   .catch((err) => console.error("Cannot remove the current like", err));
+      .catch((err) =>
+        console.error(
+          `Cannot ${isLiked ? "remove like from" : "like"} the item`,
+          err
+        )
+      );
   };
 
   const handleLogout = (res) => {
@@ -212,6 +220,7 @@ function App() {
                     clothingItems={clothingItems}
                     handleCardDelete={handleCardDelete}
                     isLoggedIn={isLoggedIn}
+                    onCardLike={handleCardLike}
                   />
                 }
               />

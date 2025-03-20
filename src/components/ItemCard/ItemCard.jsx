@@ -4,6 +4,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardDelete, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
+  const isLiked = item.likes.some((id) => id === currentUser._id);
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -13,15 +14,15 @@ function ItemCard({ item, onCardClick, onCardDelete, onCardLike }) {
     onCardDelete(item);
   };
 
-  const handleCardLike = () => {
-    onCardLike(item);
-  };
+  // const handleCardLike = () => {
+  //   onCardLike(item);
+  // };
 
   const handleLike = () => {
-    onCardLike(item);
+    onCardLike({ id: item._id, isLiked });
   };
 
-  const isLiked = item.likes.some((id) => id === currentUser._id);
+  //const isLiked = item.likes.some((id) => id === currentUser._id);
 
   console.log(item);
 
@@ -33,14 +34,16 @@ function ItemCard({ item, onCardClick, onCardDelete, onCardLike }) {
         className="card__image"
         src={item.imageUrl}
         alt={item.name}
-        onCardLike={handleCardLike}
+        //onCardLike={handleCardLike}
         //isLiked={handleLike}
       />
-      {/* <button
+      <button
         type="button"
-        className="card__delete"
-        onClick={handleCardDelete}
-      /> */}
+        className={`card__like-button ${
+          isLiked ? "card__like-button_active" : ""
+        }`}
+        onClick={handleLike}
+      />
     </li>
   );
 }
