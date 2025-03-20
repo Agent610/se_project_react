@@ -60,11 +60,11 @@ function Header({
         ) : (
           <>
             <div className="header__user">
-              <button className="header__login" onClick={handleSigninClick}>
-                Login
-              </button>
               <button className="header__register" onClick={handleSignupClick}>
                 Register
+              </button>
+              <button className="header__login" onClick={handleSigninClick}>
+                Login
               </button>
             </div>
           </>
@@ -75,6 +75,3 @@ function Header({
 }
 
 export default Header;
-
-// Height 185cm
-// Weight 175lb
