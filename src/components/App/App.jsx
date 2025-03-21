@@ -230,7 +230,7 @@ function App() {
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
                       handleAddClick={handleAddClick}
-                      onCardClick={handleCardClick}
+                      //onCardClick={onCardClick}
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
                       handleCardDelete={handleCardDelete}

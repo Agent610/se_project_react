@@ -4,7 +4,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import selectedCard from "../App/App";
 import { useContext, useEffect } from "react";
 
-function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
+function ItemModal({ activeModal, onClose, card, handleCardDelete, isOpen }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = selectedCard.owner === currentUser?._id;
@@ -14,7 +14,7 @@ function ItemModal({ activeModal, onClose, card, handleCardDelete }) {
   }`;
 
   return (
-    <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
         <button onClick={onClose} type="button" className="modal__close">
           <img src={CloseButton} alt="Close-Button" />
