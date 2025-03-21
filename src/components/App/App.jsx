@@ -34,7 +34,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({});
+  //const [userData, setUserData] = useState({});
   const [currentUser, setCurrentUser] = useState("");
 
   const handleCardClick = (card) => {
@@ -188,7 +188,7 @@ function App() {
       getCurrentUser(token)
         .then((user) => {
           setIsLoggedIn(true);
-          setUserData(user);
+          setCurrentUser(user);
         })
         .catch((err) =>
           console.error("Cannot retrive current user information", err)
@@ -196,6 +196,7 @@ function App() {
     }
   }, []);
 
+  console.log(`Current User Data:, currentUser`);
   return (
     <CurrentUserContext.Provider value={currentUser} isLoggedIn={isLoggedIn}>
       <div className="app">

@@ -40,15 +40,15 @@
   margin-left: 12px;
 }
 
-/*.header__avatar {
+.header__avatar {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;  Adjust size as needed 
+  width: 40px;
   height: 40px;
-  background-color: #ccc;  Background color for the placeholder 
+  background-color: #ccc;
   border-radius: 50%;
   font-weight: bold;
-  color: white;  Text color 
-  font-size: 18px;  Adjust font size as needed 
-} */
+  color: white;
+  font-size: 18px;
+}

@@ -19,7 +19,11 @@ function Header({
   });
 
   //const { user = {} } = useContext(CurrentUserContext);
-  const currentUser = useContext(CurrentUserContext);
+  //const currentUser = useContext(CurrentUserContext);
+  const userData = useContext(CurrentUserContext);
+  const currentUser = userData.user;
+  console.log("User name:", userData.user?.name);
+
   //const avatar = user.avatar || "";
 
   return (
@@ -39,16 +43,17 @@ function Header({
         {isLoggedIn ? (
           <Link to="/profile" className="header__link">
             <p className="header__username">{currentUser?.name}</p>
-            <img
-              src={avatar || "placeholder.png"}
-              alt={currentUser?.name}
-              className="header__avatar"
-            />
-            <div className="header__avatar-placeholder">
-              {currentUser?.name
-                ? currentUser?.name.charAt(0).toUpperCase()
-                : ""}
-            </div>
+            {currentUser?.avatar ? (
+              <img
+                src={currentUser.avatar || avatar}
+                alt={currentUser?.name}
+                className="header__avatar"
+              />
+            ) : (
+              <div className="header__avatar-placeholder">
+                {currentUser?.name?.[0]?.toUpperCase()}
+              </div>
+            )}
             <button
               onClick={handleAddClick}
               type="button"
