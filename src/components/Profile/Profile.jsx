@@ -6,7 +6,7 @@ import React from "react";
 function Profile({
   onCardClick,
   onCardDelete,
-  onAddNewClick,
+  handleAddClick,
   cards,
   clothingItems,
   isLoggedIn,
@@ -26,7 +26,7 @@ function Profile({
         <ClothesSection
           onCardClick={onCardClick}
           onCardDelete={onCardDelete}
-          onAddNewClick={onAddNewClick}
+          handleAddClick={handleAddClick}
           sectionData={cards}
           clothingItems={clothingItems}
           isLoggedIn={isLoggedIn}

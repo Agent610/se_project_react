@@ -4,7 +4,8 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ClothesSection({
-  onAddNewClick,
+  //onAddNewClick,
+  handleAddClick,
   onCardClick,
   clothingItems,
   isLoggedIn,
@@ -17,12 +18,14 @@ function ClothesSection({
     (item) => item.owner === currentUser._id
   );
 
+  console.log("handleAddClick in ClothesSection:", handleAddClick);
   return (
     <div className="clothes-section">
       <div>
         <p className="clothes__section-title">Your items</p>
         <button
-          onClick={onAddNewClick}
+          //onClick={onAddNewClick}
+          onClick={handleAddClick}
           type="button"
           className="clothes__section-button"
         >

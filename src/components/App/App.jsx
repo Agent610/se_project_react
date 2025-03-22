@@ -43,6 +43,7 @@ function App() {
   };
 
   const handleAddClick = () => {
+    console.log("Add button clicked");
     setActiveModal("add-garment");
   };
 
