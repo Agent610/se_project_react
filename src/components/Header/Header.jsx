@@ -41,19 +41,7 @@ function Header({
       <ToggleSwitch />
       <div className="header__user-container">
         {isLoggedIn ? (
-          <Link to="/profile" className="header__link">
-            <p className="header__username">{currentUser?.name}</p>
-            {currentUser?.avatar ? (
-              <img
-                src={currentUser.avatar || avatar}
-                alt={currentUser?.name}
-                className="header__avatar"
-              />
-            ) : (
-              <div className="header__avatar-placeholder">
-                {currentUser?.name?.[0]?.toUpperCase()}
-              </div>
-            )}
+          <div className="header">
             <button
               onClick={handleAddClick}
               type="button"
@@ -61,7 +49,21 @@ function Header({
             >
               + Add Clothes
             </button>
-          </Link>
+            <p className="header__username">{currentUser?.name}</p>
+            <Link to="/profile" className="header__link">
+              {currentUser?.avatar ? (
+                <img
+                  src={currentUser.avatar || avatar}
+                  alt={currentUser?.name}
+                  className="header__avatar"
+                />
+              ) : (
+                <div className="header__avatar-placeholder">
+                  {currentUser?.name?.[0]?.toUpperCase()}
+                </div>
+              )}
+            </Link>
+          </div>
         ) : (
           <>
             <div className="header__user">
