@@ -52,3 +52,19 @@
   color: white;
   font-size: 18px;
 }
+
+.header__user {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__register {
+  border: none;
+  cursor: pointer;
+}
+
+.header__login {
+  border: none;
+  cursor: pointer;
+}

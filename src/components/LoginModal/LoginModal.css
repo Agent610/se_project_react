@@ -1,3 +1,7 @@
+.login__modal {
+  width: 496px;
+  height: 304px;
+}
 .login__link {
   border: none;
   cursor: pointer;

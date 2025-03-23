@@ -12,13 +12,17 @@ function ClothesSection({
   onCardDelete,
   onCardLike,
 }) {
-  const currentUser = useContext(CurrentUserContext);
+  // const currentUser = useContext(CurrentUserContext);
 
+  // const userItems = clothingItems.filter(
+  //   (item) => item.owner === currentUser._id
+  // );
+  const userData = useContext(CurrentUserContext);
+  const currentUser = userData?.user;
   const userItems = clothingItems.filter(
-    (item) => item.owner === currentUser._id
+    (item) => item.owner === currentUser?._id
   );
 
-  console.log("handleAddClick in ClothesSection:", handleAddClick);
   return (
     <div className="clothes-section">
       <div>
