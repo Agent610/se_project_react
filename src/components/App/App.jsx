@@ -35,7 +35,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //const [userData, setUserData] = useState({});
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -123,10 +123,11 @@ function App() {
   };
 
   const handleEditSubmit = ({ name, avatar }) => {
+    console.log("Submitting edit with:", { name, avatar });
     editProfile({ name, avatar })
       .then((data) => {
+        console.log("Edit profile response:", data);
         setCurrentUser(data.user);
-        console.log(currentUser);
         // setIsLoggedIn(true);
         // setCurrentUser((previousUser) => {
         //   previousUser, name, avatar;
@@ -197,7 +198,6 @@ function App() {
     }
   }, []);
 
-  console.log(`Current User Data:, currentUser`);
   return (
     <CurrentUserContext.Provider value={currentUser} isLoggedIn={isLoggedIn}>
       <div className="app">
