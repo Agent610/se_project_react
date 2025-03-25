@@ -3,11 +3,55 @@
   align-items: center;
   gap: 16px;
 }
-.sidebar__avatar {
-  /*display: flex;
+
+.sidebar__user-information {
+  gap: 16px;
   align-items: center;
-  gap: 10px;*/
+  display: flex;
+  margin-top: 63px;
 }
-.sidebar__username {
-  margin-right: 116px;
+
+.sidebar__avatar {
+  height: 56px;
+  width: 56px;
+}
+
+.sidebar__avatar-placeholder {
+  height: 56px;
+  width: 56px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.sidebar__userName {
+  margin: 0;
+  line-height: 25px;
+  width: 157px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.sidebar__buttons {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.sidebar__logout {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.sidebar__edit {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  background: none;
+  line-height: 25px;
 }

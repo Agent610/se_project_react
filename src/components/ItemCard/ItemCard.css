@@ -26,3 +26,27 @@
   width: 100%;
   cursor: pointer;
 }
+
+.card__like-on {
+  height: 15px;
+  width: 18px;
+  border: none;
+  margin-left: 10px;
+  display: flex;
+  cursor: pointer;
+  background: transparent url(../../assets/Like-Active.png) center no-repeat;
+}
+
+.card__like-off {
+  height: 15px;
+  width: 18px;
+  border: none;
+  margin-left: 10px;
+  display: flex;
+  cursor: pointer;
+  background: transparent url(../../assets/Like-Inactive.png) center no-repeat;
+}
+
+.hidden {
+  display: none;
+}

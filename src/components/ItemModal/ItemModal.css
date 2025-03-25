@@ -29,6 +29,16 @@
   margin-left: 365px;
 }
 
+.modal__delete-button_visible {
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.modal__delete-button_hidden {
+  display: none;
+}
+
 /* .card__delete-caption {
   width: 101px;
   height: 24px;

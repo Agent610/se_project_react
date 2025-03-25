@@ -2,6 +2,7 @@
 import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./ClothesSection.css";
 
 function ClothesSection({
   //onAddNewClick,
@@ -38,7 +39,6 @@ function ClothesSection({
       </div>
       <ul className="clothes-section__list">
         {userItems.map((item) => {
-          console.log(item);
           return (
             <ItemCard
               key={item._id}

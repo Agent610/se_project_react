@@ -2,9 +2,10 @@
 import CloseButton from "../../assets/Close-Button.png";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import selectedCard from "../App/App";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
+import "./ItemModal.css";
 
-function ItemModal({ activeModal, onClose, card, handleCardDelete, isOpen }) {
+function ItemModal({ onClose, card, handleCardDelete, isOpen }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = selectedCard.owner === currentUser?._id;
@@ -27,8 +28,7 @@ function ItemModal({ activeModal, onClose, card, handleCardDelete, isOpen }) {
             <button
               onClick={() => handleCardDelete(card)}
               type="button"
-              className="modal__delete"
-              onClose={onClose}
+              className={itemDeleteButtonClassname}
             >
               Delete item
             </button>

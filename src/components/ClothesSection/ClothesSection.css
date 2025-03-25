@@ -1,3 +1,7 @@
+.clothes-section {
+  justify-self: flex-end;
+}
+
 .clothes__section-title {
   display: contents;
 }

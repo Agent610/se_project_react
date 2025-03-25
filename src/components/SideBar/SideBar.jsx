@@ -1,34 +1,43 @@
 import avatar from "../../assets/avatar.png";
-//import { NavLink, useNavigate } from "react-router-dom";
-//import { removeToken } from "../../utils/token";
 import { useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./SideBar.css";
 
-function SideBar({ handleLogout, handleEditClick }) {
+function SideBar({ handleEditClick, handleLogout }) {
   const currentUser = useContext(CurrentUserContext);
-  const [sidebar, setSideBar] = useState(true);
+  const setsidebar = useState(true);
 
   return (
     <div className="sidebar">
-      <img className="sidebar__avatar" src={avatar} alt="Avatar" />
-      <p className="sidebar__username">{currentUser?.name}</p>
-      <li>
+      <div className="sidebar__user-information">
+        <avatar setSideBar={setsidebar} />
+        {currentUser?.avatar ? (
+          <img
+            className="sidebar__avatar"
+            src={currentUser?.avatar}
+            alt={currentUser?.name}
+          />
+        ) : (
+          <div className="sidebar__avatar-placeholder">
+            {currentUser?.name ? currentUser?.name[0].toUpperCase() : ""}
+          </div>
+        )}
+        <p className="sidebar__userName">{currentUser?.name}</p>
+      </div>
+      <div className="sidebar__buttons">
         <button
+          type="button"
           onClick={handleEditClick}
-          className="sideBar__link-sideBar__edit"
+          className="sidebar__edit"
         >
           {" "}
           Change Profile Data
         </button>
-        <button
-          onClick={handleLogout}
-          className="sideBar__link-sideBar__button"
-        >
-          Sign Out
+        <button type="type" onClick={handleLogout} className="sidebar__logout">
+          Sign out
         </button>
-      </li>
+      </div>
     </div>
   );
 }
-
 export default SideBar;

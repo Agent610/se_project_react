@@ -1,10 +1,4 @@
 .profile {
   display: flex;
-  gap: 100px;
-}
-
-.profile__sidebar {
-}
-
-.profile__clothes-section {
+  gap: 116px;
 }
