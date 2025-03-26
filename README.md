@@ -11,9 +11,7 @@ The idea of the application is pretty simple - we make a call to an API, which t
   https://github.com/Agent610/se_project_express
   Code Reviewer comment:
 
-1. When I log in, I don't see my items on the profile page.But when I reload the page, everything is fine. (Tutor help)
-2. When I log in, I don't see my avatar and name in the header and sidebar. But when I reload the page, everything is fine with the header, but the sidebar doen't show my avatar and name
-3. I can't like items. When I click on the button, they disappear from the page
+3. I can't like items.
 4. The item modal doesn't open when I click on the items which are on the profile page. See the errors
 5. You need to fill the profile inputs with the user data when you open the profile modal, to let the user edit the data and submit it.
 6. When I edit the profile data, all my items and profile data disappear from the page

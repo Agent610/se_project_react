@@ -69,15 +69,12 @@ function App() {
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
-      const token = localStorage.getItem("jwt");
-      api
-        .getItemList(token)
-        .then(({ items }) => {
-          setClothingItems(items.reverse());
-        })
-        .catch((err) => console.error("Cannot retrieve items", err));
-    }
+    api
+      .getItemList()
+      .then(({ items }) => {
+        setClothingItems(items.reverse());
+      })
+      .catch((err) => console.error("Cannot retrieve items", err));
   }, [isLoggedIn]);
 
   const handleAddItemSubmit = (item) => {
@@ -118,7 +115,8 @@ function App() {
     signIn({ email, password })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setIsLoggedIn(true);
+        getUserData();
+        //setIsLoggedIn(true);
         closeActiveModal();
         navigate("/profile");
       })
@@ -141,35 +139,51 @@ function App() {
       .catch((err) => console.error("Cannot edit the current user", err));
   };
 
+  // const handleCardLike = ({ id, isLiked }) => {
+  //   const token = localStorage.getItem("jwt");
+  //   // !isLiked;
+  //   // api
+  //   //   .addCardLike(id, token)
+  //   const apiCall = isLiked ? api.removeCardLike : api.addCardLike;
+  //   apiCall(id, token)
+  //     .then((updatedCard) => {
+  //       setClothingItems((cards) =>
+  //         cards.map((item) => (item._id === id ? updatedCard : item))
+  //       );
+  //     })
+  //     // .catch((err) => console.error("Cannot like the item", err));
+  //     // api
+  //     //   .removeCardLike(id, token)
+  //     //   .then((updatedCard) => {
+  //     //     setClothingItems((cards) =>
+  //     //       cards.map((item) => (item._id === id ? updatedCard : item))
+  //     //     );
+  //     //   })
+  //     //   .catch((err) => console.error("Cannot remove the current like", err));
+  //     .catch((err) =>
+  //       console.error(
+  //         `Cannot ${isLiked ? "remove like from" : "like"} the item`,
+  //         err
+  //       )
+  //     );
+  // };
+
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    // !isLiked;
-    // api
-    //   .addCardLike(id, token)
-    const apiCall = isLiked ? api.removeCardLike : api.addCardLike;
+    const apiCall = isLiked ? api.addCardLike : api.removeCardLike;
+
     apiCall(id, token)
       .then((updatedCard) => {
-        setClothingItems((cards) =>
-          cards.map((item) => (item._id === id ? updatedCard : item))
+        setClothingItems((prevItems) =>
+          prevItems.map((item) =>
+            item.id === updatedCard.id ? updatedCard : item
+          )
         );
       })
-      // .catch((err) => console.error("Cannot like the item", err));
-      // api
-      //   .removeCardLike(id, token)
-      //   .then((updatedCard) => {
-      //     setClothingItems((cards) =>
-      //       cards.map((item) => (item._id === id ? updatedCard : item))
-      //     );
-      //   })
-      //   .catch((err) => console.error("Cannot remove the current like", err));
       .catch((err) =>
-        console.error(
-          `Cannot ${isLiked ? "remove like from" : "like"} the item`,
-          err
-        )
+        console.error(`Cannot ${isLiked ? "unlike" : "like"} item`, err)
       );
   };
-
   const handleLogout = (res) => {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt", res.token);
@@ -187,7 +201,7 @@ function App() {
       .catch(console.err);
   }, []);
 
-  useEffect(() => {
+  function getUserData() {
     const token = getToken();
     if (token) {
       getCurrentUser(token)
@@ -199,6 +213,9 @@ function App() {
           console.error("Cannot retrive current user information", err)
         );
     }
+  }
+  useEffect(() => {
+    getUserData();
   }, []);
 
   return (
@@ -244,6 +261,7 @@ function App() {
                       isLoggedIn={isLoggedIn}
                       handleEditClick={handleEditClick}
                       handleLogout={handleLogout}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

@@ -7,12 +7,10 @@ const token = localStorage.getItem("jwt");
 //   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 // };
 
-const getItemList = (token) => {
-  console.log(token);
+const getItemList = () => {
   return fetch(`${baseUrl}/items`, {
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 };
@@ -50,7 +48,7 @@ const addCardLike = (id, token) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ id }),
-  });
+  }).then(handleServerResponse);
 };
 
 const removeCardLike = (id, token) => {
@@ -61,7 +59,7 @@ const removeCardLike = (id, token) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ id }),
-  });
+  }).then(handleServerResponse);
 };
 
 const api = {

@@ -4,8 +4,9 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
 
 function SideBar({ handleEditClick, handleLogout }) {
-  const currentUser = useContext(CurrentUserContext);
-  const setSidebar = useState(true);
+  const userData = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext)?.user;
+  //const setSidebar = useState(true);
 
   return (
     <div className="sidebar">
@@ -40,3 +41,20 @@ function SideBar({ handleEditClick, handleLogout }) {
   );
 }
 export default SideBar;
+{
+  /* <div className="sidebar__user-information">
+{currentUser?.avatar ? (
+  <img
+    className="sidebar__avatar"
+    src={currentUser.avatar}
+    alt={currentUser.name}
+  />
+) : (
+  <div className="sidebar__avatar-placeholder">
+    {" "}
+    {currentUser?.name ? currentUser?.name[0].toUpperCase() : ""}
+  </div>
+)}
+<p className="sidebar__userName">{currentUser?.name}</p>
+</div> */
+}
