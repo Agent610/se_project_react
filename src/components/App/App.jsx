@@ -35,7 +35,10 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //const [userData, setUserData] = useState({});
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({
+    message: "",
+    user: { name: "", email: "", avatar: "", _id: "" },
+  });
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -170,13 +173,14 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    const apiCall = isLiked ? api.addCardLike : api.removeCardLike;
+
+    const apiCall = isLiked ? api.removeCardLike : api.addCardLike;
 
     apiCall(id, token)
       .then((updatedCard) => {
         setClothingItems((prevItems) =>
           prevItems.map((item) =>
-            item.id === updatedCard.id ? updatedCard : item
+            item._id === updatedCard._id ? updatedCard : item
           )
         );
       })

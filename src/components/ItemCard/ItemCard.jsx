@@ -3,7 +3,8 @@ import "./ItemCard.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardDelete, onCardLike, isLoggedIn }) {
-  const currentUser = useContext(CurrentUserContext);
+  const userData = useContext(CurrentUserContext);
+  const currentUser = userData.user;
   const isLiked = item.likes.some((id) => id === currentUser._id);
   const itemLikeButtonClassName = isLiked ? "card__like-on" : "card__like-off";
 
