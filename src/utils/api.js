@@ -7,10 +7,12 @@ const token = localStorage.getItem("jwt");
 //   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 // };
 
-const getItemList = () => {
+const getItemList = (token) => {
+  console.log(token);
   return fetch(`${baseUrl}/items`, {
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 };
@@ -35,7 +37,7 @@ const removeItem = (id, token) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token},`,
+      authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 };

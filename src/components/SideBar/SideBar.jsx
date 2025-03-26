@@ -5,12 +5,11 @@ import "./SideBar.css";
 
 function SideBar({ handleEditClick, handleLogout }) {
   const currentUser = useContext(CurrentUserContext);
-  const setsidebar = useState(true);
+  const setSidebar = useState(true);
 
   return (
     <div className="sidebar">
       <div className="sidebar__user-information">
-        <avatar setSideBar={setsidebar} />
         {currentUser?.avatar ? (
           <img
             className="sidebar__avatar"

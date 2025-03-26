@@ -69,13 +69,16 @@ function App() {
   };
 
   useEffect(() => {
-    api
-      .getItemList()
-      .then(({ items }) => {
-        setClothingItems(items.reverse());
-      })
-      .catch((err) => console.error("Cannot retrieve items", err));
-  }, []);
+    if (isLoggedIn) {
+      const token = localStorage.getItem("jwt");
+      api
+        .getItemList(token)
+        .then(({ items }) => {
+          setClothingItems(items.reverse());
+        })
+        .catch((err) => console.error("Cannot retrieve items", err));
+    }
+  }, [isLoggedIn]);
 
   const handleAddItemSubmit = (item) => {
     const token = localStorage.getItem("jwt");
