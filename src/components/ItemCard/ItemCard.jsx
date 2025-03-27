@@ -5,7 +5,8 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 function ItemCard({ item, onCardClick, onCardDelete, onCardLike, isLoggedIn }) {
   const userData = useContext(CurrentUserContext);
   const currentUser = userData.user;
-  const isLiked = item.likes.some((id) => id === currentUser._id);
+  //const isLiked = item.likes.some((id) => id === currentUser.id);
+  const isLiked = item.likes.some((id) => id === currentUser._id) || false;
   const itemLikeButtonClassName = isLiked ? "card__like-on" : "card__like-off";
 
   const handleCardClick = () => {

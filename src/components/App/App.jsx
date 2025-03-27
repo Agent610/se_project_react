@@ -40,7 +40,7 @@ function App() {
     user: { name: "", email: "", avatar: "", _id: "" },
   });
 
-  const handleCardClick = (card) => {
+  const onCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
@@ -81,9 +81,8 @@ function App() {
   }, [isLoggedIn]);
 
   const handleAddItemSubmit = (item) => {
-    const token = localStorage.getItem("jwt");
     api
-      .addItem(item, token)
+      .addItem(item, localStorage.getItem("jwt"))
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
         closeActiveModal();
@@ -93,7 +92,7 @@ function App() {
 
   const handleCardDelete = (card) => {
     api
-      .removeItem(card._id)
+      .removeItem(card._id, localStorage.getItem("jwt"))
       .then(() => {
         setClothingItems(clothingItems.filter((c) => c._id !== card._id));
         closeActiveModal();
@@ -242,7 +241,8 @@ function App() {
                 element={
                   <Main
                     weatherData={weatherData}
-                    handleCardClick={handleCardClick}
+                    //handleCardClick={handleCardClick}
+                    onCardClick={onCardClick}
                     clothingItems={clothingItems}
                     handleCardDelete={handleCardDelete}
                     isLoggedIn={isLoggedIn}
@@ -258,7 +258,8 @@ function App() {
                       handleAddClick={handleAddClick}
                       //onCardClick={onCardClick}
                       clothingItems={clothingItems}
-                      handleCardClick={handleCardClick}
+                      //handleCardClick={handleCardClick}
+                      onCardClick={onCardClick}
                       handleCardDelete={handleCardDelete}
                       handleSigninClick={handleSigninClick}
                       handleSignupClick={handleSignupClick}
