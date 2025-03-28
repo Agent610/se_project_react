@@ -3,7 +3,11 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
-  const currentUser = useContext(CurrentUserContext);
+  //const currentUser = useContext(CurrentUserContext);
+  const userData = useContext(CurrentUserContext);
+  const currentUser = userData.user;
+  console.log(JSON.stringify(currentUser));
+
   const [name, setName] = useState(currentUser?.name || "");
   const [avatar, setAvatar] = useState(currentUser?.avatar || "");
 
@@ -17,10 +21,11 @@ const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
 
   useEffect(() => {
     if (currentUser) {
-      setName(currentUser.name || "");
-      setAvatar(currentUser.avatar || "");
+      setName(currentUser.name);
+      setAvatar(currentUser.avatar);
     }
   }, [currentUser]);
+  console.log(name, avatar);
 
   return (
     <ModalWithForm

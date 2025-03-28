@@ -40,6 +40,7 @@ function ItemCard({ item, onCardClick, onCardDelete, onCardLike, isLoggedIn }) {
         type="button"
         className={isLoggedIn ? itemLikeButtonClassName : "hidden"}
         onClick={handleLike}
+        //onCardDelete={isLoggedIn ? handleCardDelete : ""}
       />
     </li>
   );

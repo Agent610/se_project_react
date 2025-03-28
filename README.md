@@ -11,11 +11,9 @@ The idea of the application is pretty simple - we make a call to an API, which t
   https://github.com/Agent610/se_project_express
   Code Reviewer comment:
 
-6. Please, show the delete item button only when the user is logged in, because you can't delete not your own items
 7. When I edit the profile data, all my items and profile data disappear from the page
-8. You need to fill the profile inputs with the user data when you open the profile modal, to let the user edit the data and submit it.
    (CSS)
-9. Please, make the login and sign up modals match the design
-10. The sidebar menu should match the design.
-11. Please, make the hearts match the design
-12. Please, make the delete item button match the design. It should be red, and it should be in the right part of the card bottom
+8. Please, make the login and sign up modals match the design
+9. The sidebar menu should match the design.
+10. Please, make the hearts match the design
+11. Please, make the delete item button match the design. It should be red, and it should be in the right part of the card bottom

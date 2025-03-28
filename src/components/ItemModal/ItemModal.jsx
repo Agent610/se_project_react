@@ -6,14 +6,16 @@ import { useContext } from "react";
 import "./ItemModal.css";
 
 function ItemModal({ onClose, card, handleCardDelete, isOpen }) {
-  const currentUser = useContext(CurrentUserContext);
+  //onst currentUser = useContext(CukrentUserContext);
+  const userData = useContext(CurrentUserContext);
+  const currentUser = userData.user;
 
   const isOwn = selectedCard.owner === currentUser?._id;
 
   const itemDeleteButtonClassname = `modal__delete ${
     isOwn ? "modal__delete-button_visible" : "modal__delete-button_hidden"
   }`;
-
+  console.log(isOwn);
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
