@@ -25,8 +25,6 @@ function ItemCard({ item, onCardClick, onCardDelete, onCardLike, isLoggedIn }) {
     onCardLike({ id: item._id, isLiked });
   };
 
-  console.log(item);
-
   return (
     <li className="card">
       <h2 className="card__name">{item.name}</h2>

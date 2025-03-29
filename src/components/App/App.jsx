@@ -46,7 +46,6 @@ function App() {
   };
 
   const handleAddClick = () => {
-    console.log("Add button clicked");
     setActiveModal("add-garment");
   };
 
@@ -126,11 +125,9 @@ function App() {
   };
 
   const handleEditSubmit = ({ name, avatar }) => {
-    console.log("Submitting edit with:", { name, avatar });
     editProfile({ name, avatar })
-      .then((data) => {
-        console.log("Edit profile response:", data);
-        setCurrentUser(data.user);
+      .then((user) => {
+        setCurrentUser(user);
         // setIsLoggedIn(true);
         // setCurrentUser((previousUser) => {
         //   previousUser, name, avatar;

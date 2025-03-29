@@ -6,7 +6,6 @@ const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
   //const currentUser = useContext(CurrentUserContext);
   const userData = useContext(CurrentUserContext);
   const currentUser = userData.user;
-  console.log(JSON.stringify(currentUser));
 
   const [name, setName] = useState(currentUser?.name || "");
   const [avatar, setAvatar] = useState(currentUser?.avatar || "");
@@ -25,7 +24,6 @@ const EditProfileModal = ({ isOpen, onSubmit, onClose }) => {
       setAvatar(currentUser.avatar);
     }
   }, [currentUser]);
-  console.log(name, avatar);
 
   return (
     <ModalWithForm

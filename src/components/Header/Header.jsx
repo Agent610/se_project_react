@@ -22,7 +22,6 @@ function Header({
   //const currentUser = useContext(CurrentUserContext);
   const userData = useContext(CurrentUserContext);
   const currentUser = userData.user;
-  console.log("User name:", userData.user?.name);
 
   //const avatar = user.avatar || "";
 

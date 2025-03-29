@@ -22,6 +22,7 @@ function ModalWithForm({
           onSubmit={(e) => {
             onSubmit(e);
           }}
+          // onSubmit={onSubmit}
         >
           {children}
           <button type="submit" className="modal__submit">

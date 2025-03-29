@@ -15,7 +15,6 @@ function ItemModal({ onClose, card, handleCardDelete, isOpen }) {
   const itemDeleteButtonClassname = `modal__delete ${
     isOwn ? "modal__delete-button_visible" : "modal__delete-button_hidden"
   }`;
-  console.log(isOwn);
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
