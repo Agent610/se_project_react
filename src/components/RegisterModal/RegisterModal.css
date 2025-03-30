@@ -1,4 +1,15 @@
 .register__link {
   border: none;
   cursor: pointer;
+  background: none;
+  position: absolute;
+  padding: 0%;
+  width: 73px;
+  height: 20px;
+  margin-right: 260px;
+  margin-bottom: 44px;
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
 }
