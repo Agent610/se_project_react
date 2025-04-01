@@ -1,4 +1,5 @@
 import { baseUrl } from "./api";
+import { handleServerResponse } from "./api";
 
 export const signUp = ({ email, password, name, avatar }) => {
   return fetch(`${baseUrl}/signup`, {
@@ -7,10 +8,12 @@ export const signUp = ({ email, password, name, avatar }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password, name, avatar }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 };
+//}).then((res) => {
+//return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+//});
+//};
 
 export const signIn = ({ email, password }) => {
   return fetch(`${baseUrl}/signin`, {
@@ -19,10 +22,12 @@ export const signIn = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 };
+//   }).then((res) => {
+//     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+//   });
+// };
 
 export const getCurrentUser = (token) => {
   return fetch(`${baseUrl}/users/me`, {
@@ -31,10 +36,12 @@ export const getCurrentUser = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 };
+//   }).then((res) => {
+//     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+//   });
+// };
 
 export const editProfile = ({ name, avatar }) => {
   const token = localStorage.getItem("jwt");
@@ -45,7 +52,9 @@ export const editProfile = ({ name, avatar }) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(handleServerResponse);
 };
+//   }).then((res) => {
+//     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+//   });
+// };

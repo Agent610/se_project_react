@@ -8,7 +8,7 @@
 }
 
 .card__name {
-  position: absolute;
+  /* position: absolute; */
   top: 15px;
   margin: 0;
   height: 20px;
@@ -25,6 +25,15 @@
 .card__image {
   width: 100%;
   cursor: pointer;
+}
+
+.card__container {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .card__like-on {

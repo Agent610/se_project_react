@@ -2,14 +2,14 @@
   border: none;
   cursor: pointer;
   background: none;
-  position: absolute;
-  padding: 0%;
   width: 73px;
   height: 20px;
-  margin-right: 260px;
-  margin-bottom: 44px;
   font-family: "Cabinet Grotesk";
-  font-size: 16px;
   font-weight: 700;
+  font-size: 16px;
   line-height: 20px;
+  position: relative;
+  padding: 0%;
+  margin-right: auto;
+  margin-bottom: 0;
 }

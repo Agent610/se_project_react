@@ -27,18 +27,20 @@ function ItemCard({ item, onCardClick, onCardDelete, onCardLike, isLoggedIn }) {
 
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
+      <div className="card__container">
+        <h2 className="card__name">{item.name}</h2>
+        <button
+          type="button"
+          className={isLoggedIn ? itemLikeButtonClassName : "hidden"}
+          onClick={handleLike}
+          //onCardDelete={isLoggedIn ? handleCardDelete : ""}
+        />
+      </div>
       <img
         onClick={handleCardClick}
         className="card__image"
         src={item.imageUrl}
         alt={item.name}
-      />
-      <button
-        type="button"
-        className={isLoggedIn ? itemLikeButtonClassName : "hidden"}
-        onClick={handleLike}
-        //onCardDelete={isLoggedIn ? handleCardDelete : ""}
       />
     </li>
   );
