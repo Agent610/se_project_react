@@ -117,3 +117,8 @@ export const coordinates = {
 };
 
 export const APIkey = "b3c608ce3cd04f98e63ad647a4683ac9";
+
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wwyw.jumpingcrab.com"
+    : "http://localhost:3001";

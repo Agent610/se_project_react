@@ -1,5 +1,7 @@
 //export const baseUrl = "http://localhost:3000";
-export const baseUrl = "http://localhost:3001";
+//export const baseUrl = "http://localhost:3001";
+
+import { baseUrl } from "./constants";
 
 const token = localStorage.getItem("jwt");
 
